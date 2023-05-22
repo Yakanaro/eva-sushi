@@ -16,11 +16,19 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="font-sans antialiased h-full">
+<body class="font-sans antialiased h-full ">
 <div class="flex flex-col h-screen max-w-screen-xl mx-auto">
     <header class="">
         @include('layouts.navigation')
     </header>
+
+    <div class="mt-20">
+        @include('layouts.carousel')
+    </div>
+
+    <div>
+        @include('layouts.cards')
+    </div>
 
     <footer>
 
