@@ -112,7 +112,7 @@
                     </tr>
                     </thead>
                     <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="bg-white border border-pink-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                             Запеченные суши
                         </td>
@@ -138,7 +138,7 @@
                             <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Удалить</a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="bg-white border border-pink-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
                         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                             Запеченные роллы
                         </td>
@@ -164,7 +164,7 @@
                             <a href="#" class="font-medium text-red-600 dark:text-red-500 hover:underline">Удалить</a>
                         </td>
                     </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
+                    <tr class="bg-white border border-pink-300 dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
 
                         <td class="px-6 py-4 font-semibold text-gray-900 dark:text-white">
                             Темпура Роллы
@@ -196,7 +196,7 @@
 
                 <div class="bg-gray-50 mr-1 ml-1 ">
                     <label for="large-input" class="block mb-2 mt-2 text-sm font-medium text-gray-900 dark:text-white text-center">Комментарии к заказу</label>
-                    <input type="text" id="large-input" class="mb-1 block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    <input type="text" id="large-input" class="mb-1 block w-full p-4 text-gray-900 border border-pink-300 rounded-lg bg-gray-50 sm:text-md focus:ring-pink-500 focus:border-pink-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                 </div>
                 <div class="flex items-center justify-center p-4 space-x-2  border-gray-200 rounded-b dark:border-gray-600 bg-gray-50">
                     <button data-modal-hide="staticModal" type="button" class="text-white bg-pink-400 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Заказать</button>
