@@ -19,7 +19,7 @@
 <body class="font-sans antialiased h-full ">
 <div class="flex flex-col h-screen max-w-screen-xl mx-auto">
     <header class="">
-        @include('layouts.navigation')
+        @include('layouts.navigationWithReg')
     </header>
 
     <div class="mt-20">

@@ -5,39 +5,33 @@
             <img src="https://sun9-62.userapi.com/impg/YOW9CE7ff8X-2EpIoW1hY4VbRW10Ju00Q5KmwA/T09PRNl3oSk.jpg?size=564x640&quality=96&sign=9e5a1c9bad3b265bd3e5f72242fc702f&type=album" class="h-10 mr-3" alt="Flowbite Logo">
             <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">EVA Sushi</span>
         </a>
-        <div class="flex md:order-2">
-            <button data-modal-target="authentication-modal" data-modal-toggle="authentication-modal" type="button" class="text-white bg-pink-400 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-flex items-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
-                <svg aria-hidden="true" class="w-5 h-5 mr-2 -ml-1" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z"></path></svg>
-                Заказать
+        <div class="flex items-center md:order-2">
+            <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
+                <span class="sr-only">Open user menu</span>
+                <img class="w-8 h-8 rounded-full" src="https://sun9-48.userapi.com/impg/ClfiD9jEWH-MHkv_n_GhofzFNyfVspSyhJgEyw/zprY11NM22E.jpg?size=512x512&quality=96&sign=2aad2746c60e8f1eb57a5db937b1511b&type=album" alt="user photo">
             </button>
-
-            <!-- Main modal -->
-            <div id="authentication-modal" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-                <div class="relative w-full max-w-md max-h-full">
-                    <!-- Modal content -->
-                    <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
-                        <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center dark:hover:bg-gray-800 dark:hover:text-white" data-modal-hide="authentication-modal">
-                            <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                            <span class="sr-only">Close modal</span>
-                        </button>
-                        <div class="px-6 py-6 lg:px-8">
-                            <h3 class="mb-4 text-xl font-medium text-gray-900 dark:text-white">Авторизуйтесь, чтобы сделать заказ</h3>
-                            <form class="space-y-6" action="#">
-                                <div>
-                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ваш номер телефона</label>
-                                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="8900888888" required>
-                                </div>
-                                <div>
-                                    <label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Ваше Имя</label>
-                                    <input type="email" name="email" id="email" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="" required>
-                                </div>
-                                <button type="submit" class="w-full text-white bg-pink-400 hover:bg-pink-500 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Получить код авторизации</button>
-                            </form>
-                        </div>
-                    </div>
+            <!-- Dropdown menu -->
+            <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow dark:bg-gray-700 dark:divide-gray-600" id="user-dropdown">
+                <div class="px-4 py-3">
+                    <span class="block text-sm text-gray-900 dark:text-white">Имя</span>
+                    <span class="block text-sm  text-gray-500 truncate dark:text-gray-400">Номер</span>
                 </div>
+                <ul class="py-2" aria-labelledby="user-menu-button">
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Корзина</a>
+                    </li>
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Настройки</a>
+                    </li>
+{{--                    <li>--}}
+{{--                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Earnings</a>--}}
+{{--                    </li>--}}
+                    <li>
+                        <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200 dark:hover:text-white">Выйти</a>
+                    </li>
+                </ul>
             </div>
-            <button data-collapse-toggle="navbar-sticky" type="button" class="inline-flex items-center p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-sticky" aria-expanded="false">
+            <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="mobile-menu-2" aria-expanded="false">
                 <span class="sr-only">Open main menu</span>
                 <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
             </button>
@@ -58,9 +52,9 @@
                             <li>
                                 <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Темпура роллы</a>
                             </li>
-{{--                            <li>--}}
-{{--                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Темпура ролллы</a>--}}
-{{--                            </li>--}}
+                            {{--                            <li>--}}
+                            {{--                                <a href="#" class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Темпура ролллы</a>--}}
+                            {{--                            </li>--}}
                         </ul>
                     </div>
                 </li>
