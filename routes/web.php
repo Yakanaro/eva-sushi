@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PositionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -17,6 +18,20 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('index');
 });
+
+Route::get('admin', function () {
+    return view('admin.adminIndex');
+});
+
+Route::get('admin/users', function () {
+    return view('admin.usersList');
+})->name('admin.users');
+Route::get('admin/positions', [PositionController::class, 'index'])
+    ->name('admin.positions');
+Route::get('admin/positions/create', 'App\Http\Controllers\PositionController@create')->name('position.create');
+Route::post('admin/positions', 'App\Http\Controllers\PositionController@store')->name('position.store');
+Route::delete('admin/positions/{position}', 'App\Http\Controllers\PositionController@destroy')->name('position.delete');
+
 
 Route::get('/dashboard', function () {
     return view('dashboard');
