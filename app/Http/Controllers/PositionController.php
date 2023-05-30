@@ -15,7 +15,7 @@ class PositionController extends Controller
         return view('admin.positionsList', compact('positions'));
     }
 
-    public function create(): \Illuminate\Contracts\View\View|\Illuminate\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\Foundation\Application
+    public function create()
     {
         return view('admin.createPosition');
     }
@@ -35,6 +35,18 @@ class PositionController extends Controller
         return redirect()
             ->route('admin.positions');
     }
+
+    public function update(Position $position)
+    {
+        $data = request()->validate([
+            'name' => 'required|string',
+            'description' => 'required|string',
+            'price' => 'required|numeric',
+        ]);
+        $position->update($data);
+        return redirect()->route('admin.positions');
+    }
+
 
     public function destroy(Position $position)
     {
