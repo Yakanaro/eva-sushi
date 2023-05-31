@@ -30,6 +30,7 @@ class CategoriesController extends Controller
     {
         $category->delete();
         return redirect()->route('category.index');
+
     }
 
 }

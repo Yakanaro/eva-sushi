@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PositionController;
 use App\Http\Controllers\CategoriesController;
+use App\Http\Controllers\LabelController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,6 +37,10 @@ Route::patch('admin/positions/{position}', 'App\Http\Controllers\PositionControl
 Route::post('admin/categories', [CategoriesController::class, 'store'])->name('category.store');
 Route::get('admin/categories', [CategoriesController::class, 'index'])->name('category.index');
 Route::delete('admin/categories/{category}', [CategoriesController::class, 'destroy'])->name('category.delete');
+
+Route::get('admin/labels', [LabelController::class, 'index'])->name('label.index');
+Route::post('admin/labels', [LabelController::class, 'store'])->name('label.store');
+Route::delete('admin/labels/{label}', [LabelController::class, 'destroy'])->name('label.delete');
 
 
 Route::get('/dashboard', function () {
