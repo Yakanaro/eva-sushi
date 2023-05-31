@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
 use App\Models\Position;
 use Illuminate\Http\Request;
 
@@ -11,8 +12,9 @@ class PositionController extends Controller
     public function index()
     {
         $positions = Position::all();
+        $categories = Category::all();
 
-        return view('admin.positionsList', compact('positions'));
+        return view('admin.positionsList', compact('positions', 'categories'));
     }
 
     public function create()
@@ -26,6 +28,7 @@ class PositionController extends Controller
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|numeric',
+            'categories_id' => '',
         ]);
 
         $position = new Position();

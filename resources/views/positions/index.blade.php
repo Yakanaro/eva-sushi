@@ -12,6 +12,9 @@
                 Описание
             </th>
             <th scope="col" class="px-6 py-3">
+                Категория
+            </th>
+            <th scope="col" class="px-6 py-3">
                 Действия
             </th>
         </tr>
@@ -22,6 +25,7 @@
                 <td class="px-6 py-4" >{{ $position->name }}</td>
                 <td class="px-6 py-4">{{ $position->price }}</td>
                 <td class="px-6 py-4">{{ $position->description }}</td>
+                <td class="px-6 py-4">{{ $position->category['title'] }}</td>
                 <td class="px-6 py-4">
                     <div class="flex flex-row space-x-3 justify-center">
                         <form action="{{route('position.delete', $position->id)}}" method="post">
