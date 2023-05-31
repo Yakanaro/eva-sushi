@@ -33,7 +33,9 @@ Route::post('admin/positions', 'App\Http\Controllers\PositionController@store')-
 Route::delete('admin/positions/{position}', 'App\Http\Controllers\PositionController@destroy')->name('position.delete');
 Route::patch('admin/positions/{position}', 'App\Http\Controllers\PositionController@update')->name('position.update');
 
+Route::post('admin/categories', [CategoriesController::class, 'store'])->name('category.store');
 Route::get('admin/categories', [CategoriesController::class, 'index'])->name('category.index');
+Route::delete('admin/categories/{category}', [CategoriesController::class, 'destroy'])->name('category.delete');
 
 
 Route::get('/dashboard', function () {
