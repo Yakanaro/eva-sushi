@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Label;
 use App\Models\Position;
+use App\Models\PositionLabel;
 use Illuminate\Http\Request;
 
 class PositionController extends Controller
@@ -13,8 +15,9 @@ class PositionController extends Controller
     {
         $positions = Position::all();
         $categories = Category::all();
+        $labels = Label::all();
 
-        return view('admin.positionsList', compact('positions', 'categories'));
+        return view('admin.positionsList', compact('positions', 'categories', 'labels'));
     }
 
     public function create()
@@ -29,14 +32,15 @@ class PositionController extends Controller
             'description' => 'required|string',
             'price' => 'required|numeric',
             'categories_id' => '',
+            'labels' => '',
         ]);
+        $labels = $data['labels'];
+        unset($data['labels']);
 
-        $position = new Position();
-        $position->fill($data);
-        $position->save();
+        $position = Position::create($data);
+        $position->labels()->attach($labels);
 
-        return redirect()
-            ->route('admin.positions');
+        return redirect()->route('admin.positions');
     }
 
     public function update(Position $position)
@@ -53,6 +57,7 @@ class PositionController extends Controller
 
     public function destroy(Position $position)
     {
+        $position->labels()->detach();
         $position->delete();
         return redirect()->route('admin.positions');
     }

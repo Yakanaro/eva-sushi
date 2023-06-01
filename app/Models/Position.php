@@ -15,4 +15,9 @@ class Position extends Model
     {
         return $this->belongsTo(Category::class, 'categories_id', 'id');
     }
+
+    public function labels()
+    {
+        return $this->belongsToMany(Label::class, 'position_labels', 'position_id', 'label_id');
+    }
 }

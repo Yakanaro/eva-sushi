@@ -10,4 +10,9 @@ class Label extends Model
     use HasFactory;
 
     protected $fillable = ['title'];
+
+    public function positions()
+    {
+        return $this->belongsToMany(Position::class, 'position_labels', 'label_id', 'position_id');
+    }
 }
