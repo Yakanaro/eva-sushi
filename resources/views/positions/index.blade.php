@@ -32,12 +32,12 @@
                 <td class="px-6 py-4">{{ $position->price }}</td>
                 <td class="px-6 py-4">{{ $position->description }}</td>
                 <td class="px-6 py-4">{{ $position->category['title'] }}</td>
-                @foreach($labels as $label)
-                    <td class=" flex flex-col px-6 py-4">{{ $label->title }}</td>
+                @foreach($position->labels as $label)
+                    <td class="px-6 py-4 flex flex-row">{{ $label->title }}</td>
                 @endforeach
                 <td class="px-6 py-4 ">
                     <div class="flex justify-center">
-                        <img src="{{asset('/storage/'.$position->preview_image)}}" alt="" srcset="" width="50" height="50" align="middle">
+                        <img src="{{asset('/storage/'.$position->preview_image)}}" alt="" srcset="" width="50" height="50">
                     </div>
                 </td>
                 <td class="px-6 py-4">
