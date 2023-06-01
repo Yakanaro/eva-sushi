@@ -7,6 +7,7 @@ use App\Models\Label;
 use App\Models\Position;
 use App\Models\PositionLabel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class PositionController extends Controller
 {
@@ -33,7 +34,12 @@ class PositionController extends Controller
             'price' => 'required|numeric',
             'categories_id' => '',
             'labels' => '',
+            'preview_image' => 'required|file',
         ]);
+//        $data['preview_image'] = Storage::put('/images', $data['preview_image']);
+        $category = Category::find($data['categories_id']);
+        $category_title = $category->title;
+        $data['preview_image'] = $request->file('preview_image')->store("images/{$category_title}", 'public');
         $labels = $data['labels'];
         unset($data['labels']);
 

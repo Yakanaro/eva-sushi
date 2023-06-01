@@ -18,6 +18,9 @@
                 Метки
             </th>
             <th scope="col" class="px-6 py-3">
+                Изображение позиции
+            </th>
+            <th scope="col" class="px-6 py-3">
                 Действия
             </th>
         </tr>
@@ -32,6 +35,11 @@
                 @foreach($labels as $label)
                     <td class=" flex flex-col px-6 py-4">{{ $label->title }}</td>
                 @endforeach
+                <td class="px-6 py-4 ">
+                    <div class="flex justify-center">
+                        <img src="{{asset('/storage/'.$position->preview_image)}}" alt="" srcset="" width="50" height="50" align="middle">
+                    </div>
+                </td>
                 <td class="px-6 py-4">
                     <div class="flex flex-row space-x-3 justify-center">
                         <form action="{{route('position.delete', $position->id)}}" method="post">
@@ -55,4 +63,5 @@
     <div>
         @include('positions.edit')
     </div>
+
 </div>
