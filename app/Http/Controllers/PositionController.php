@@ -21,6 +21,7 @@ class PositionController extends Controller
         return view('admin.positionsList', compact('positions', 'categories', 'labels'));
     }
 
+
     public function create()
     {
         return view('admin.createPosition');
@@ -49,15 +50,40 @@ class PositionController extends Controller
         return redirect()->route('admin.positions');
     }
 
-    public function update(Position $position)
+    public function edit(Position $position)
+    {
+        $categories = Category::all();
+        $labels = Label::all();
+        return view('positions.edit', compact('position', 'categories', 'labels'));
+    }
+
+    public function update(Request $request, Position $position)
     {
         $data = request()->validate([
             'name' => 'required|string',
             'description' => 'required|string',
             'price' => 'required|numeric',
+            'categories_id' => '',
+            'labels' => '',
+            'preview_image' => 'nullable|file',
         ]);
+
+        $positions = Position::all();
+        $categories = Category::all();
+        $labels = Label::all();
+
+
+        $category = Category::find($data['categories_id']);
+        $category_title = $category->title;
+        $data['preview_image'] = $request->file('preview_image')->store("images/{$category_title}", 'public');
+        $label = $data['labels'];
+        unset($data['labels']);
+
         $position->update($data);
-        return redirect()->route('admin.positions');
+        $position->labels()->sync($label);
+
+//        return view('positions.index', compact('positions', 'categories', 'labels'));
+        return redirect()->route('admin.positions', compact('positions', 'categories', 'labels'));
     }
 
 
@@ -65,6 +91,8 @@ class PositionController extends Controller
     {
         $position->labels()->detach();
         $position->delete();
+        $path_img = $position->preview_image;
+        Storage::disk('public')->delete($path_img);
         return redirect()->route('admin.positions');
     }
 }
