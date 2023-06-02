@@ -21,6 +21,9 @@
                 Изображение позиции
             </th>
             <th scope="col" class="px-6 py-3">
+                Статус позиции
+            </th>
+            <th scope="col" class="px-6 py-3">
                 Действия
             </th>
         </tr>
@@ -40,6 +43,14 @@
                         <img src="{{asset('/storage/'.$position->preview_image)}}" alt="" srcset="" width="50" height="50">
                     </div>
                 </td>
+                <td class="px-6 py-4 flex items-center justify-center">
+                    @if($position->status)
+                        <span class="flex w-3 h-3 bg-green-500 rounded-full mt-4" ></span>
+                    @else
+                        <span class="flex w-3 h-3 bg-red-500 rounded-full mt-4"></span>
+                    @endif
+                </td>
+{{--                <td class="px-6 py-4">{{ $position->status }}</td>--}}
                 <td class="px-6 py-4">
                     <div class="flex flex-row space-x-3 justify-center">
                         <form action="{{route('position.delete', $position->id)}}" method="post">

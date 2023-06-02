@@ -9,7 +9,7 @@ class Position extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['name', 'description', 'price', 'preview_image', 'categories_id', 'labels'];
+    protected $fillable = ['name', 'description', 'price', 'preview_image', 'categories_id', 'labels', 'status'];
 
     public function category()
     {

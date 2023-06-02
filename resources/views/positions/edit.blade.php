@@ -48,6 +48,13 @@
                         </select>
                     </div>
                     <div>
+                        <label for="status" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Статус</label>
+                        <select id="status" name="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <option value="1" {{$position->status ? 'selected' : ''}}>В наличии</option>
+                            <option value="0" {{$position->status ? '' : 'selected'}}>В стоп-листе</option>
+                        </select>
+                    </div>
+                    <div>
                         <label for="price" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Цена позиции</label>
                         <input type="number" name="price" id="price" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white" placeholder="250 (Без указания валюты)" value="{{$position->price}}" required>
                     </div>

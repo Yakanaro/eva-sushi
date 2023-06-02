@@ -37,12 +37,14 @@ class PositionController extends Controller
             'categories_id' => '',
             'labels' => '',
             'preview_image' => 'required|file',
+            'status' => 'boolean'
         ]);
         $category = Category::find($data['categories_id']);
         $category_title = $category->title;
         $data['preview_image'] = $request->file('preview_image')->store("images/{$category_title}", 'public');
         $labels = $data['labels'];
         unset($data['labels']);
+        $data['status'] = (bool) $data['status'];
         $position = Position::create($data);
         $position->labels()->attach($labels);
 
@@ -65,6 +67,7 @@ class PositionController extends Controller
             'categories_id' => '',
             'labels' => '',
             'preview_image' => 'nullable|file',
+            'status' => 'boolean',
         ]);
 
         $positions = Position::all();
@@ -78,6 +81,7 @@ class PositionController extends Controller
         }
         $label = $data['labels'];
         unset($data['labels']);
+        $data['status'] = (bool) $data['status'];
         $position->update($data);
         $position->labels()->sync($label);
         return redirect()->route('admin.positions', compact('positions', 'categories', 'labels'));
