@@ -47,8 +47,8 @@
                             @method('delete')
                             <button type="submit" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Удалить</button>
                         </form>
-{{--                        <button type="submit" data-modal-target="edit-position" data-modal-toggle="edit-position" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Изменить</button>--}}
-                        <a href="{{route('position.edit', $position->id)}}">Изменить</a>
+                        <button type="submit" data-modal-target="edit-position" data-modal-toggle="edit-position" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Изменить</button>
+{{--                        <a href="{{route('position.edit', $position->id)}}">Изменить</a>--}}
                     </div>
                 </td>
             </tr>
@@ -61,8 +61,11 @@
     <div>
         @include('positions.create')
     </div>
-{{--    <div>--}}
-{{--        @include('positions.edit');--}}
-{{--    </div>--}}
-
+    <div>
+        @if(count($positions->toArray()) == 0 )
+            <div></div>
+        @else
+            @include('positions.edit')
+        @endif
+    </div>
 </div>

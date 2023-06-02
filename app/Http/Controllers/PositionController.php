@@ -7,6 +7,7 @@ use App\Models\Label;
 use App\Models\Position;
 use App\Models\PositionLabel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 
 class PositionController extends Controller
@@ -17,8 +18,8 @@ class PositionController extends Controller
         $positions = Position::all();
         $categories = Category::all();
         $labels = Label::all();
-
         return view('admin.positionsList', compact('positions', 'categories', 'labels'));
+
     }
 
 
@@ -37,13 +38,11 @@ class PositionController extends Controller
             'labels' => '',
             'preview_image' => 'required|file',
         ]);
-//        $data['preview_image'] = Storage::put('/images', $data['preview_image']);
         $category = Category::find($data['categories_id']);
         $category_title = $category->title;
         $data['preview_image'] = $request->file('preview_image')->store("images/{$category_title}", 'public');
         $labels = $data['labels'];
         unset($data['labels']);
-
         $position = Position::create($data);
         $position->labels()->attach($labels);
 
@@ -71,21 +70,18 @@ class PositionController extends Controller
         $positions = Position::all();
         $categories = Category::all();
         $labels = Label::all();
-
-
         $category = Category::find($data['categories_id']);
         $category_title = $category->title;
-        $data['preview_image'] = $request->file('preview_image')->store("images/{$category_title}", 'public');
+
+        if(Arr::has($data, 'preview_image')){
+            $data['preview_image'] = $request->file('preview_image')->store("images/{$category_title}", 'public');
+        }
         $label = $data['labels'];
         unset($data['labels']);
-
         $position->update($data);
         $position->labels()->sync($label);
-
-//        return view('positions.index', compact('positions', 'categories', 'labels'));
         return redirect()->route('admin.positions', compact('positions', 'categories', 'labels'));
     }
-
 
     public function destroy(Position $position)
     {
