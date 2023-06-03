@@ -1,4 +1,4 @@
-<div>
+<div class="pl-[150px]">
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-black uppercase bg-gray-50 text-center">
         <tr>
