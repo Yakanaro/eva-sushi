@@ -18,10 +18,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-//Route::get('/', function () {
-//    return view('index');
-//})->name('home');
-
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('admin', function () {
@@ -32,11 +28,11 @@ Route::get('admin/users', function () {
     return view('admin.usersList');
 })->name('admin.users');
 Route::get('admin/positions', [PositionController::class, 'index'])->name('admin.positions');
-Route::get('admin/positions/create', 'App\Http\Controllers\PositionController@create')->name('position.create');
-Route::post('admin/positions', 'App\Http\Controllers\PositionController@store')->name('position.store');
-Route::get('admin/positions/{position}/edit', 'App\Http\Controllers\PositionController@edit')->name('position.edit');
-Route::patch('admin/positions/{position}', 'App\Http\Controllers\PositionController@update')->name('position.update');
-Route::delete('admin/positions/{position}', 'App\Http\Controllers\PositionController@destroy')->name('position.delete');
+Route::get('admin/positions/create', [PositionController::class, 'create'])->name('position.create');
+Route::post('admin/positions', [PositionController::class, 'store'])->name('position.store');
+Route::get('admin/positions/{position}/edit', [PositionController::class, 'edit'])->name('position.edit');
+Route::patch('admin/positions/{position}', [PositionController::class, 'update'])->name('position.update');
+Route::delete('admin/positions/{position}', [PositionController::class, 'destroy'])->name('position.delete');
 
 Route::post('admin/categories', [CategoriesController::class, 'store'])->name('category.store');
 Route::get('admin/categories', [CategoriesController::class, 'index'])->name('category.index');
