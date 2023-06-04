@@ -87,6 +87,19 @@ class PositionController extends Controller
         return redirect()->route('admin.positions', compact('positions', 'categories', 'labels'));
     }
 
+    public function search()
+    {
+        $labels = Label::all();
+        $categories = Category::all();
+        $data = request()->validate([
+            'search' => 'required|string',
+        ]);
+        $positionName = $data['search'];
+        $positions = Position::where('name', 'like', "%{$positionName}%")->get();
+
+        return view('admin.positionsList', compact('positions', 'categories', 'labels'));
+    }
+
     public function destroy(Position $position)
     {
         $position->labels()->detach();

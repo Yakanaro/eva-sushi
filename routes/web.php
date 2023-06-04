@@ -28,6 +28,7 @@ Route::get('admin/users', function () {
     return view('admin.usersList');
 })->name('admin.users');
 Route::get('admin/positions', [PositionController::class, 'index'])->name('admin.positions');
+Route::get('admin/positions/search', [PositionController::class, 'search'])->name('admin.search');
 Route::get('admin/positions/create', [PositionController::class, 'create'])->name('position.create');
 Route::post('admin/positions', [PositionController::class, 'store'])->name('position.store');
 Route::get('admin/positions/{position}/edit', [PositionController::class, 'edit'])->name('position.edit');
