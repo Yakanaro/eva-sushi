@@ -16,7 +16,7 @@
         @foreach($categories as $category)
             <div id="{{$category->title}}" role="tabpanel" aria-labelledby="{{$category->title}}-tab" class="grid grid-cols-1 mx-3 md:grid-cols-3 gap-4">
                 @foreach($positions as $position)
-                    @if ($position->category['title'] === $category->title)
+                    @if ($position->category['title'] === $category->title && $position->status )
                         <div class="w-full bg-white border border-gray-200 rounded-lg shadow" id="{{$category->title}}-{{$position->id}}" role="tabpanel" aria-labelledby="{{$category->title}}-tab">
                             <a href="#">
                                 <img class="rounded-t-lg" src="{{asset('/storage/'.$position->preview_image)}}" width="232" height="360" alt="" />
