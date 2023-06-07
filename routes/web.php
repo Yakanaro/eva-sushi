@@ -44,6 +44,7 @@ Route::post('admin/labels', [LabelController::class, 'store'])->name('label.stor
 Route::delete('admin/labels/{label}', [LabelController::class, 'destroy'])->name('label.delete');
 
 Route::post('/', [AddressController::class, 'store'])->name('address.store');
+Route::get('address/new', [AddressController::class, 'index'])->name('address.index');
 
 Route::get('/dashboard', function () {
     return view('dashboard');
