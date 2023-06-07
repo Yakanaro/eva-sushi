@@ -13,6 +13,7 @@ class Cart extends Model
 
     public function positions()
     {
-        return $this->hasMany(Position::class, 'cart_id');
+        return $this->belongsToMany(Position::class, 'basket_position', 'cart_id', 'position_id');
     }
+
 }

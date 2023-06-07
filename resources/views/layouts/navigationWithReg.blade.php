@@ -1,23 +1,23 @@
 <nav class="bg-white fixed w-full z-50 top-0 left-0 border-b border-gray-200">
     <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4 bg-white">
-        <a href="https://flowbite.com/" class="flex items-center">
+        <a href="{{route('home.index')}}" class="flex items-center">
             <img src="https://sun9-62.userapi.com/impg/YOW9CE7ff8X-2EpIoW1hY4VbRW10Ju00Q5KmwA/T09PRNl3oSk.jpg?size=564x640&quality=96&sign=9e5a1c9bad3b265bd3e5f72242fc702f&type=album" class="h-10 mr-3" alt="Flowbite Logo">
             <span class="self-center text-2xl font-semibold whitespace-nowrap">EVA Sushi</span>
         </a>
 
         <!-- shop basket -->
         <div class="flex items-center md:order-2 bg-white">
-            <button data-modal-target="staticModal" data-modal-toggle="staticModal" type="button" class="relative flex items-center justify-center w-8 h-8 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 mr-1">
-                <svg fill="#000000" height="800px" width="800px" version="1.1" id="XMLID_268_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
-                     viewBox="0 0 24 24" xml:space="preserve">
-            <g id="shop-basket">
+            <a href="{{ route('cart.index') }}" class="relative flex items-center justify-center w-8 h-8 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 mr-1">
+                <svg fill="#000000" height="800px" width="800px" version="1.1" id="XMLID_268_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve">
+                <g id="shop-basket">
                 <g>
-                    <path d="M20.9,24H3.1l-1-11H0V7h4.5l4.7-7l1.7,1.1L7,6.9h10.2l-3.9-5.8L15,0l4.7,7H24v6h-2.1L20.9,24z M13,22h6.1l0.8-9H4.1l0.8,9
-			H13z M2,11h20V9H2V11z"/>
+                <path d="M20.9,24H3.1l-1-11H0V7h4.5l4.7-7l1.7,1.1L7,6.9h10.2l-3.9-5.8L15,0l4.7,7H24v6h-2.1L20.9,24z M13,22h6.1l0.8-9H4.1l0.8,9 H13z M2,11h20V9H2V11z"/>
                 </g>
-            </g></svg>
-                <span class="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold bg-red-500 text-white rounded-full">3</span>
-            </button>
+                </g>
+                </svg>
+                <span class="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold bg-red-500 text-white rounded-full">{{$positionCount}}</span>
+            </a>
+
 
         <!-- user dropdown menu -->
             <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">

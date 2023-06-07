@@ -20,6 +20,9 @@ return new class extends Migration
             $table->string('preview_image');
             $table->timestamps();
 
+            $table->unsignedBigInteger('cart_id')->nullable();
+            $table->foreign('cart_id')->references('id')->on('carts')->onDelete('cascade');
+
             $table->unsignedBigInteger('categories_id');
 
             $table->index('categories_id', 'position_category_idx');
