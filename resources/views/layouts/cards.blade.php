@@ -32,11 +32,7 @@
 
                                 <div class="flex items-center justify-between mt-[80px]">
                                     <span class="text-3xl font-bold text-gray-900">{{$position->price}}₽</span>
-                                    <form action="{{route('cart.add', ['position_id' => $position->id])}}" method="POST">
-                                        @csrf
-{{--                                        <a href="#" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</a>--}}
-                                        <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</button>
-                                    </form>
+                                    <button class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn" data-position-id = "{{$position->id}}">Заказать</button>
                                 </div>
                             </div>
                         </div>
@@ -47,34 +43,41 @@
     </div>
 </div>
 
-{{--<script>--}}
-{{--    // Получаем все кнопки "Заказать"--}}
-{{--    const addToCartButtons = document.querySelectorAll('.add-to-cart-btn');--}}
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('.add-to-cart-btn').on('click', function(e) {
+                e.preventDefault();
 
-{{--    // Обрабатываем клик на каждой кнопке--}}
-{{--    addToCartButtons.forEach(button => {--}}
-{{--        button.addEventListener('click', function() {--}}
-{{--            const positionId = this.getAttribute('data-position-id');--}}
+                // Получаем данные о позиции, которую нужно добавить
+                var positionId = $(this).data('position-id');
 
-{{--            // Отправляем AJAX-запрос на добавление позиции в корзину--}}
-{{--            fetch('/cart/add', {--}}
-{{--                method: 'POST',--}}
-{{--                headers: {--}}
-{{--                    'Content-Type': 'application/json',--}}
-{{--                    'X-CSRF-TOKEN': '{{ csrf_token() }}'--}}
-{{--                },--}}
-{{--                body: JSON.stringify({ position_id: positionId })--}}
-{{--            })--}}
-{{--                .then(response => response.json())--}}
-{{--                .then(data => {--}}
-{{--                    // Обработка ответа от сервера, если необходимо--}}
-{{--                })--}}
-{{--                .catch(error => {--}}
-{{--                    console.error('Ошибка:', error);--}}
-{{--                });--}}
-{{--        });--}}
-{{--    });--}}
-{{--</script>--}}
+                // Отправляем AJAX запрос на добавление позиции в корзину
+                $.ajax({
+                    url: '{{ route("cart.add") }}',
+                    type: 'POST',
+                    data: {
+                        position_id: positionId,
+                        _token: '{{ csrf_token() }}'
+                    },
+                    success: function(response) {
+                        // Обработка успешного добавления в корзину
+                        console.log(response);
+                        var positionCountElement = $('#positionCount');
+                        positionCountElement.text(positionCount);
+                        // var cartCounter = $('#cart-counter');
+                        // var currentCount = parseInt(cartCounter.text());
+                        // cartCounter.text(currentCount + 1);
+                    },
+                    error: function(xhr, status, error) {
+                        // Обработка ошибки AJAX-запроса
+                        console.log(error); // Пример вывода ошибки в консоль
+                    }
+                });
+            });
+        });
+    </script>
+
 
 
 
