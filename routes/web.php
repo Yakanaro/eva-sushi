@@ -29,6 +29,7 @@ Route::get('admin', function () {
 Route::get('admin/users', function () {
     return view('admin.usersList');
 })->name('admin.users');
+
 Route::get('admin/positions', [PositionController::class, 'index'])->name('admin.positions');
 Route::get('admin/positions/search', [PositionController::class, 'search'])->name('admin.search');
 Route::get('admin/positions/create', [PositionController::class, 'create'])->name('position.create');
@@ -49,7 +50,6 @@ Route::post('/', [AddressController::class, 'store'])->name('address.store');
 Route::post('/cart',[CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
 Route::delete('/cart/{position}', [CartController::class, 'destroy'])->name('cart.delete');
-
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -43,40 +43,6 @@
     </div>
 </div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function() {
-            $('.add-to-cart-btn').on('click', function(e) {
-                e.preventDefault();
-
-                // Получаем данные о позиции, которую нужно добавить
-                var positionId = $(this).data('position-id');
-
-                // Отправляем AJAX запрос на добавление позиции в корзину
-                $.ajax({
-                    url: '{{ route("cart.add") }}',
-                    type: 'POST',
-                    data: {
-                        position_id: positionId,
-                        _token: '{{ csrf_token() }}'
-                    },
-                    success: function(response) {
-                        // Обработка успешного добавления в корзину
-                        console.log(response);
-                        var positionCountElement = $('#positionCount');
-                        positionCountElement.text(positionCount);
-                        // var cartCounter = $('#cart-counter');
-                        // var currentCount = parseInt(cartCounter.text());
-                        // cartCounter.text(currentCount + 1);
-                    },
-                    error: function(xhr, status, error) {
-                        // Обработка ошибки AJAX-запроса
-                        console.log(error); // Пример вывода ошибки в консоль
-                    }
-                });
-            });
-        });
-    </script>
 
 
 
