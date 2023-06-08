@@ -1,7 +1,6 @@
-
 <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-    <table class="w-full text-sm text-left text-gray-500 ">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 ">
+    <table class="w-full text-sm text-left text-black ">
+        <thead class="text-xs text-black uppercase bg-pink-50 text-center ">
         <tr>
             <th scope="col" class="px-6 py-3">
                 <span class="sr-only">Image</span>
@@ -22,14 +21,16 @@
         </thead>
         <tbody>
             @foreach($cart->positions as $position)
-                <tr class="bg-white border-b ">
+                <tr class="bg-white border-b border-pink-400 text-center">
                     <td class="px-6 py-4">
-                        кок
+                        <div class="flex justify-center">
+                            <img src="{{asset('/storage/'.$position->preview_image)}}" alt="" srcset="" width="50" height="50">
+                        </div>
                     </td>
                     <td class="px-6 py-4">
                         {{ $position->name }}
                     </td>
-                    <td class="px-6 py-4">
+                    <td class="px-6 py-4 text-center">
                         2
                     </td>
                     <td class="px-6 py-4">
@@ -45,8 +46,6 @@
                         </form>
                     </td>
                 </tr>
-
-
             @endforeach
         </tbody>
     </table>
