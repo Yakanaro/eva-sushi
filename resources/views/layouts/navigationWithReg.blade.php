@@ -9,7 +9,7 @@
         <div class="flex items-center md:order-2 bg-white">
             <a href="{{ route('cart.index') }}"
                class="relative flex items-center justify-center w-8 h-8 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 mr-1">
-                <svg fill="#000000" height="800px" width="800px" id="XMLID_268_"
+                <svg fill="#000000" height="80px" width="80px" id="XMLID_268_"
                      xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24"
                      xml:space="preserve">
                 <g id="shop-basket">

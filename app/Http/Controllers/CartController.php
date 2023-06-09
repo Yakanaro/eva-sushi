@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Address;
 use App\Models\Position;
 use App\Models\Cart;
 use Illuminate\Http\Request;
@@ -12,9 +13,10 @@ class CartController extends Controller
     public function index()
     {
         $user = Auth::user();
+        $addresses = Address::all();
         $cart = $user->cart;
         $positionCount = $cart->positions()->count();
-        return view('cart.index', compact('cart', 'positionCount'));
+        return view('cart.index', compact('cart', 'positionCount', 'addresses'));
     }
 
     public function addToCart(Request $request)
