@@ -46,6 +46,8 @@ Route::post('admin/labels', [LabelController::class, 'store'])->name('label.stor
 Route::delete('admin/labels/{label}', [LabelController::class, 'destroy'])->name('label.delete');
 
 Route::post('/', [AddressController::class, 'store'])->name('address.store');
+Route::get('/addresses', [AddressController::class, 'index'])->name('address.index');
+Route::delete('/addresses/{address}', [AddressController::class, 'destroy'])->name('address.delete');
 
 Route::post('/cart',[CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

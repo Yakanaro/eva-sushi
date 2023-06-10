@@ -13,7 +13,8 @@ class HomeController extends Controller
         $categories = Category::all();
         $positions = Position::all();
         $cart = auth()->user()->cart;
-        $positionCount = $cart->positions()->count();
+//        $positionCount = $cart->positions()->count();
+        $positionCount = 0;
         return view('index', compact('categories', 'positions', 'positionCount'));
     }
 }
