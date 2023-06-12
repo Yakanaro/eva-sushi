@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Position;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class HomeController extends Controller
 {
@@ -12,9 +13,8 @@ class HomeController extends Controller
     {
         $categories = Category::all();
         $positions = Position::all();
-        $cart = auth()->user()->cart;
-//        $positionCount = $cart->positions()->count();
-        $positionCount = 0;
+        $user = Auth::user();
+        $positionCount = $user ? $user->cart->positions()->count() : 0;
         return view('index', compact('categories', 'positions', 'positionCount'));
     }
 }

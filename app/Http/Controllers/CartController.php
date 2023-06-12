@@ -12,10 +12,22 @@ class CartController extends Controller
 {
     public function index()
     {
+//        $user = Auth::user();
+//        $addresses = Address::all();
+//        $cart = $user->cart;
+//        $positionCount = $cart->positions()->count();
+
         $user = Auth::user();
-        $addresses = Address::all();
-        $cart = $user->cart;
-        $positionCount = $cart->positions()->count();
+
+        if ($user) {
+            $cart = $user->cart->load('positions');
+            $positionCount = $cart->positions->count();
+            $addresses = Address::get();
+        } else {
+            $positionCount = 0;
+            $cart = null;
+            $addresses = collect();
+        }
         return view('cart.index', compact('cart', 'positionCount', 'addresses'));
     }
 
