@@ -12,11 +12,6 @@ class CartController extends Controller
 {
     public function index()
     {
-//        $user = Auth::user();
-//        $addresses = Address::all();
-//        $cart = $user->cart;
-//        $positionCount = $cart->positions()->count();
-
         $user = Auth::user();
 
         if ($user) {
@@ -37,17 +32,14 @@ class CartController extends Controller
         $positionId = $request->input('position_id');
 
 
-        // Найдите позицию по ее идентификатору
         $position = Position::find($positionId);
 
         if (!$position) {
             return response()->json(['error' => 'Позиция не найдена'], 404);
         }
 
-        // Получите текущую корзину пользователя или создайте новую, если она отсутствует
         $cart = Cart::firstOrCreate(['user_id' => auth()->id()]);
 
-        // Добавьте позицию в корзину
         $cart->positions()->attach($position);
 
         return response()->json(['success' => 'Позиция успешно добавлена в корзину']);
