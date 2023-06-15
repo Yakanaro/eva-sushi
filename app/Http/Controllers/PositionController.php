@@ -19,7 +19,6 @@ class PositionController extends Controller
         $categories = Category::all();
         $labels = Label::all();
         return view('admin.positionsList', compact('positions', 'categories', 'labels'));
-
     }
 
 
@@ -96,7 +95,6 @@ class PositionController extends Controller
         ]);
         $positionName = $data['search'];
         $positions = Position::where('name', 'like', "%{$positionName}%")->get();
-
         return view('admin.positionsList', compact('positions', 'categories', 'labels'));
     }
 

@@ -28,10 +28,7 @@ class CartController extends Controller
 
     public function addToCart(Request $request)
     {
-
         $positionId = $request->input('position_id');
-
-
         $position = Position::find($positionId);
 
         if (!$position) {
@@ -39,15 +36,12 @@ class CartController extends Controller
         }
 
         $cart = Cart::firstOrCreate(['user_id' => auth()->id()]);
-
         $cart->positions()->attach($position);
-
         return response()->json(['success' => 'Позиция успешно добавлена в корзину']);
     }
 
     public function destroy(Position $position)
     {
-
         $cart = auth()->user()->cart;
         $cart->positions()->detach($position);
         return redirect()->route('cart.index');
