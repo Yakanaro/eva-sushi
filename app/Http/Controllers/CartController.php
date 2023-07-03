@@ -15,8 +15,9 @@ class CartController extends Controller
         $user = Auth::user();
 
         if ($user) {
-            $cart = $user->cart->load('positions');
-            $positionCount = $cart->positions->count();
+            $cart = $user->cart ? $user->cart->load('positions') : null;
+            $positionCount = $cart ? $cart->positions->count() : null;
+//            $positionCount = $cart->positions->count();
             $addresses = Address::get();
         } else {
             $positionCount = 0;
