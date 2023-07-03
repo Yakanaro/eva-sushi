@@ -161,7 +161,11 @@
 
                                         <div class="flex items-center justify-between mt-[80px]">
                                             <span class="text-3xl font-bold text-gray-900">{{$position->price}}₽</span>
-                                            <button data-position-id = "{{$position->id}}" class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</button>
+                                            @auth
+                                                <button data-position-id = "{{$position->id}}" class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</button>
+                                            @else
+                                                <button data-modal-target="auth-modal" data-modal-toggle="auth-modal" class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</button>
+                                            @endauth
                                         </div>
                                     </div>
                                 </div>
@@ -170,6 +174,10 @@
                     </div>
                 @endforeach
             </div>
+        </div>
+
+        <div>
+            @include('layouts.auth')
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
