@@ -40,30 +40,30 @@
                     </a>
 
 
-                    <!-- user dropdown menu -->
-                    <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">
-                        <span class="sr-only">Open user menu</span>
-                        <img class="w-8 h-8 rounded-full" src="https://sun9-48.userapi.com/impg/ClfiD9jEWH-MHkv_n_GhofzFNyfVspSyhJgEyw/zprY11NM22E.jpg?size=512x512&quality=96&sign=2aad2746c60e8f1eb57a5db937b1511b&type=album" alt="user photo">
-                    </button>
-                    <!-- Dropdown menu -->
-                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">
-                        <div class="px-4 py-3">
-                            <span class="block text-sm text-gray-900">Имя</span>
-                            <span class="block text-sm  text-gray-500 truncate">Номер</span>
-                        </div>
-                        <ul class="py-2" aria-labelledby="user-menu-button">
-                            <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Настройки</a>
-                            </li>
-                            <li>
-                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Выйти</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">
-                        <span class="sr-only">Open main menu</span>
-                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>
-                    </button>
+{{--                    <!-- user dropdown menu -->--}}
+{{--                    <button type="button" class="flex mr-3 text-sm bg-gray-800 rounded-full md:mr-0 focus:ring-4 focus:ring-gray-300" id="user-menu-button" aria-expanded="false" data-dropdown-toggle="user-dropdown" data-dropdown-placement="bottom">--}}
+{{--                        <span class="sr-only">Open user menu</span>--}}
+{{--                        <img class="w-8 h-8 rounded-full" src="https://sun9-48.userapi.com/impg/ClfiD9jEWH-MHkv_n_GhofzFNyfVspSyhJgEyw/zprY11NM22E.jpg?size=512x512&quality=96&sign=2aad2746c60e8f1eb57a5db937b1511b&type=album" alt="user photo">--}}
+{{--                    </button>--}}
+{{--                    <!-- Dropdown menu -->--}}
+{{--                    <div class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded-lg shadow" id="user-dropdown">--}}
+{{--                        <div class="px-4 py-3">--}}
+{{--                            <span class="block text-sm text-gray-900">Имя</span>--}}
+{{--                            <span class="block text-sm  text-gray-500 truncate">Номер</span>--}}
+{{--                        </div>--}}
+{{--                        <ul class="py-2" aria-labelledby="user-menu-button">--}}
+{{--                            <li>--}}
+{{--                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Настройки</a>--}}
+{{--                            </li>--}}
+{{--                            <li>--}}
+{{--                                <a href="#" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Выйти</a>--}}
+{{--                            </li>--}}
+{{--                        </ul>--}}
+{{--                    </div>--}}
+{{--                    <button data-collapse-toggle="mobile-menu-2" type="button" class="inline-flex items-center p-2 ml-1 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200" aria-controls="mobile-menu-2" aria-expanded="false">--}}
+{{--                        <span class="sr-only">Open main menu</span>--}}
+{{--                        <svg class="w-6 h-6" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 15a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path></svg>--}}
+{{--                    </button>--}}
                 </div>
 
                 <div class="bg-white items-center justify-between hidden w-full md:flex md:w-auto md:order-1" id="navbar-sticky">
@@ -205,6 +205,18 @@
                         }
                     });
                 });
+            });
+        </script>
+
+
+        <script>
+            const addToCartBtn = document.querySelector('.add-to-cart-btn');
+
+            addToCartBtn.addEventListener('click', function() {
+                addToCartBtn.textContent = 'Добавлено в корзину';
+                addToCartBtn.disabled = true;
+                addToCartBtn.classList.remove('bg-gradient-to-r', 'from-red-200', 'via-red-300', 'to-yellow-200', 'hover:bg-gradient-to-bl');
+                addToCartBtn.classList.add('bg-gray-400', 'hover:bg-gray-400', 'cursor-not-allowed');
             });
         </script>
     </div>
