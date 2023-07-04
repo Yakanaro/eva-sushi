@@ -164,7 +164,7 @@
                                             @auth
                                                 <button data-position-id = "{{$position->id}}" class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</button>
                                             @else
-                                                <button data-modal-target="auth-modal" data-modal-toggle="auth-modal" class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">Заказать</button>
+                                                <button data-modal-target="auth-modal" data-modal-toggle="auth-modal" class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center">Заказать</button>
                                             @endauth
                                         </div>
                                     </div>

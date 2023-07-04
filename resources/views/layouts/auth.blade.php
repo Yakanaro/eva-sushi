@@ -8,15 +8,13 @@
             </button>
             <div class="px-6 py-6 lg:px-8">
                 <h3 class="mb-4 text-xl font-medium text-gray-900">Укажите номер телефона</h3>
-                <form class="space-y-6" action="#">
+                <form class="space-y-6" action="{{route('register')}}" method="POST">
+                    @csrf
                     <div>
                         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">Ваш номер телефона</label>
-                        <input type="tel" id="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="8900888888" pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}" required>
+                        <input type="tel" id="phone" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="8900888888" required>
                     </div>
                     <button type="submit" class="w-full text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Войти</button>
-{{--                    <div class="text-sm font-medium text-gray-500">--}}
-{{--Not registered? <a href="#" class="text-blue-700 hover:underline">Create account</a>--}}
-{{--                    </div>--}}
                 </form>
             </div>
         </div>
