@@ -26,9 +26,9 @@ Route::get('admin', function () {
     return view('admin.adminIndex');
 });
 
-Route::get('admin/users', function () {
-    return view('admin.usersList');
-})->name('admin.users');
+//Route::get('admin/users', function () {
+//    return view('admin.usersList');
+//})->name('admin.users');
 
 Route::get('admin/positions', [PositionController::class, 'index'])->name('admin.positions');
 Route::get('admin/positions/search', [PositionController::class, 'search'])->name('admin.search');
@@ -56,6 +56,8 @@ Route::delete('/cart/{position}', [CartController::class, 'destroy'])->name('car
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
+Route::get('admin/users', [ProfileController::class, 'index'])->name('profile.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

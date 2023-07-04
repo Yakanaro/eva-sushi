@@ -19,6 +19,7 @@ class AddressController extends Controller
             'floor' => 'nullable|string',
             'intercom_code' => 'nullable|string',
         ]);
+        $data['user_id'] = Auth::id();
         $address = Address::create($data);
 
         return redirect()->route('cart.index', compact('address'));

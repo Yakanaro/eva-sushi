@@ -23,7 +23,7 @@ class CartController extends Controller
             $cart = null;
             $addresses = collect();
         }
-        return view('cart.index', compact('cart', 'positionCount', 'addresses'));
+        return view('cart.index', compact('cart', 'positionCount', 'addresses', 'user'));
     }
 
     public function addToCart(Request $request)

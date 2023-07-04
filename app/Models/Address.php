@@ -9,7 +9,7 @@ class Address extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['street', 'house', 'building', 'entrance', 'apartment', 'floor', 'intercom_code'];
+    protected $fillable = ['street', 'house', 'building', 'entrance', 'apartment', 'floor', 'intercom_code','user_id'];
 
 
     public function fullAddress(Address $address): string
@@ -33,5 +33,10 @@ class Address extends Model
         }
 
         return rtrim($fullAddress, ', ');
+    }
+
+    public function users()
+    {
+        $this->belongsTo(User::class);
     }
 }
