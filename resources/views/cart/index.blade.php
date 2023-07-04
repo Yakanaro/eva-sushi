@@ -17,7 +17,7 @@
 </head>
 
 <body class="font-sans antialiased h-full ">
-<div class="flex flex-col h-screen max-w-screen-xl mx-auto">
+<div class="flex flex-col h-screen">
     <header class="">
         @include('layouts.navigationWithReg')
     </header>
@@ -26,7 +26,7 @@
         @include('layouts.carts')
     </div>
 
-    <footer>
+    <footer class="mt-5">
         @include('layouts.footer')
     </footer>
 </div>

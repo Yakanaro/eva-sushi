@@ -17,13 +17,14 @@ class CartController extends Controller
         if ($user) {
             $cart = $user->cart ? $user->cart->load('positions') : null;
             $positionCount = $cart ? $cart->positions->count() : null;
+            $totalPrice = $cart ? $cart->positions()->sum('price'): null;
             $addresses = Address::get();
         } else {
             $positionCount = 0;
             $cart = null;
             $addresses = collect();
         }
-        return view('cart.index', compact('cart', 'positionCount', 'addresses', 'user'));
+        return view('cart.index', compact('cart', 'positionCount', 'addresses', 'user', 'totalPrice'));
     }
 
     public function addToCart(Request $request)
