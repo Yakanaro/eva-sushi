@@ -23,6 +23,7 @@ class CartController extends Controller
             $positionCount = 0;
             $cart = null;
             $addresses = collect();
+            $totalPrice = 0;
         }
         return view('cart.index', compact('cart', 'positionCount', 'addresses', 'user', 'totalPrice'));
     }

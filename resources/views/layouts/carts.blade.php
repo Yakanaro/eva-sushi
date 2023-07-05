@@ -1,4 +1,4 @@
-<div class="overflow-x-auto drop-shadow-lg rounded-lg mx-3 shadow-lg shadow-pink-300/50">
+<div class="overflow-x-auto drop-shadow-lg rounded-lg mx-3 shadow-lg shadow-pink-300/30">
     <div class="overflow-x-auto">
         <table class="w-full text-sm text-left text-black ">
             <thead class="text-xs text-black uppercase bg-pink-50 text-center drop-shadow-lg">
@@ -78,16 +78,16 @@
 </div>
 
 {{--address--}}
-<div class="drop-shadow-md rounded-lg flex flex-row space-x-3 space-y-3 mt-3 mx-3">
-    <div class="shadow-lg shadow-pink-300/50 flex-grow rounded-lg">
+<div class="rounded-lg grid grid-rows-2 grid-cols-2 space-x-3 space-y-3 mt-3 mx-3">
+    <div class="shadow-lg shadow-pink-300/30 rounded-lg">
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-4">Адрес доставки</label>
-        <div class="flex flex-row">
+        <div class="">
             <select id="countries" class="h-11 mr-2 ml-2 bg-gray-50 border border-pink-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                 @foreach($addresses as $address)
                     <option selected>{{$address->fullAddress($address)}}</option>
                 @endforeach
             </select>
-            <div class="flex flex justify-center items-center">
+            <div class="flex flex justify-center items-center mt-3">
                 <button type="button" data-modal-target="addAddress" data-modal-toggle="addAddress" class=" h-11 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Добавить</button>
             </div>
         </div>
@@ -98,7 +98,7 @@
         </div>
     </div>
 
-    <div class="shadow-lg shadow-pink-300/50 rounded-lg flex-grow">
+    <div class="shadow-lg shadow-pink-300/30 rounded-lg flex-grow">
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center">Способ оплаты</label>
         <div class="flex flex-row justify-center space-x-3">
             <div class="flex items-center pl-4 border border-pink-200 rounded">
@@ -130,21 +130,17 @@
             </button>
         </div>
     </div>
+    <div class=" grow shadow-lg shadow-pink-300/30 rounded-lg">
+        <label for="message" class="block mb-4 text-sm font-medium text-gray-900 text-center mt-4">Добавить комментарий к заказу</label>
+        <textarea id="message" rows="1" class="block mb-2 mx-2 p-2.5 w-1/2 text-sm text-gray-900 bg-gray-50 rounded-lg border border-pink-200 focus:ring-red-500 focus:border-red-500" placeholder="Ваш комментарий"></textarea>
+    </div>
+    <div class="text-black grow shadow-lg shadow-pink-300/30 text-center flex justify-center items-center rounded-lg">
+        <p class="text-xl font-bold">Сумма заказа: </p>
+        <p class="text-xl font-bold">{{$totalPrice}}₽</p>
+    </div>
 </div>
-<div class="drop-shadow-lg  shadow-lg shadow-pink-300/50 mx-3 rounded-lg mt-4">
-    <div class="flex flex-row flex-none space-x-3">
-        <div class=" grow shadow-lg shadow-pink-300/50 rounded-lg">
-            <label for="message" class="block mb-4 text-sm font-medium text-gray-900 text-center mt-4">Добавить комментарий к заказу</label>
-            <textarea id="message" rows="1" class="block mb-2 mx-2 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-pink-200 focus:ring-red-500 focus:border-red-500" placeholder="Ваш комментарий"></textarea>
-        </div>
-        <div class="text-black grow shadow-lg shadow-pink-300/50 text-center flex justify-center items-center rounded-lg">
-            <p class="text-xl font-bold">Сумма заказа: </p>
-            <p class="text-xl font-bold">{{$totalPrice}}₽</p>
-        </div>
-    </div>
-    <div class="flex flex justify-center items-center mt-4">
-        <button type="button" class="mt-2 mb-2 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Оформить заказ</button>
-    </div>
+<div class="flex flex justify-center items-center mt-4">
+    <button type="button" class="mt-2 mb-2 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Оформить заказ</button>
 </div>
 
 <!-- Main modal -->
