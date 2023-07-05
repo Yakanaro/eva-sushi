@@ -31,12 +31,21 @@ class RegisteredUserController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $request->validate([
+//            'phone' => ['required', 'string', 'unique:users']
             'phone' => ['required', 'string', 'unique:users']
         ]);
+
+        $user = User::where('phone', $request->phone)->first();
+        if($user)
+        {
+            Auth::login($user);
+            return redirect(RouteServiceProvider::HOME);
+        }
 
         $user = User::create([
             'phone' => $request->phone,
         ]);
+
 
         event(new Registered($user));
 
