@@ -100,16 +100,22 @@
 
     <div class="shadow-lg shadow-pink-300/30 rounded-lg flex-grow">
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-4">Способ оплаты</label>
-        <div class="flex flex-row justify-center space-x-3">
-            <div class="flex items-center pl-4 border border-pink-200 rounded">
-                <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-10 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                <label for="bordered-radio-1" class="w-full py-4 ml-2 text-sm font-medium text-black">Наличными</label>
-            </div>
-            <div class="flex items-center pl-4 border border-pink-200 rounded">
-                <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-5 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">
-                <label for="bordered-radio-2" class="w-full py-4 ml-2 text-sm font-medium text-black mr-2">Курьеру по карте</label>
-            </div>
+        <div class="">
+            <select id="countries" class="h-11 bg-gray-50 border border-pink-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 text-center">
+                <option selected>Курьеру по карте</option>
+                <option>Наличными</option>
+            </select>
         </div>
+{{--        <div class="flex flex-row justify-center space-x-3">--}}
+{{--            <div class="flex items-center pl-4 border border-pink-200 rounded">--}}
+{{--                <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-10 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">--}}
+{{--                <label for="bordered-radio-1" class="w-full py-4 ml-2 text-sm font-medium text-black">Наличными</label>--}}
+{{--            </div>--}}
+{{--            <div class="flex items-center pl-4 border border-pink-200 rounded">--}}
+{{--                <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-5 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">--}}
+{{--                <label for="bordered-radio-2" class="w-full py-4 ml-2 text-sm font-medium text-black mr-2">Курьеру по карте</label>--}}
+{{--            </div>--}}
+{{--        </div>--}}
 
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-2 ">Количество гостей</label>
         <div class="flex items-center space-x-3 justify-center mb-3">
