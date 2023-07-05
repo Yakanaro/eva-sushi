@@ -158,7 +158,6 @@
                                             <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 text-center">{{$position->name}}</h5>
                                         </a>
                                         <p class="mb-3 font-normal text-gray-700 text-center">{{$position->description}}</p>
-
                                         <div class="flex items-center justify-between mt-[80px]">
                                             <span class="text-3xl font-bold text-gray-900">{{$position->price}}₽</span>
                                             @auth
