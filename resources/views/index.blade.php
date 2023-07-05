@@ -29,7 +29,7 @@
                 <!-- shop basket -->
                 <div class="flex items-center md:order-2 bg-white">
                     <a href="{{ route('cart.index') }}" class="relative flex items-center justify-center w-8 h-8 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 mr-1">
-                        <svg fill="#000000" height="800px" width="800px" version="1.1" id="XMLID_268_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve">
+                        <svg fill="#000000" height="50px" width="800px" version="1.1" id="XMLID_268_" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" xml:space="preserve">
                 <g id="shop-basket">
                     <g>
                         <path d="M20.9,24H3.1l-1-11H0V7h4.5l4.7-7l1.7,1.1L7,6.9h10.2l-3.9-5.8L15,0l4.7,7H24v6h-2.1L20.9,24z M13,22h6.1l0.8-9H4.1l0.8,9 H13z M2,11h20V9H2V11z"/>
