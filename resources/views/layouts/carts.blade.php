@@ -76,14 +76,13 @@
         </table>
     </div>
 </div>
-
 {{--address--}}
 <div class="rounded-lg grid grid-rows-2 grid-cols-2 gap-3 mt-3 mx-3">
     <div class="shadow-lg shadow-pink-300/30 rounded-lg">
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-4">Адрес доставки</label>
         <div class="">
             <select id="countries" class="h-11 bg-gray-50 border border-pink-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                @foreach($addresses as $address)
+                @foreach($user->addresses as $address)
                     <option selected>{{$address->fullAddress($address)}}</option>
                 @endforeach
             </select>
@@ -97,7 +96,7 @@
                 Удалить или изменить адрес можно здесь</a>
         </div>
     </div>
-
+{{--Payment method and number of guests--}}
     <div class="shadow-lg shadow-pink-300/30 rounded-lg flex-grow">
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-4">Способ оплаты</label>
         <div class="">
@@ -136,6 +135,7 @@
             </button>
         </div>
     </div>
+{{--Total Price--}}
     <div class="shadow-lg shadow-pink-300/30 rounded-lg ">
         <label for="message" class="block ml-2 mb-4 text-sm font-medium text-gray-900 text-center mt-4">Добавить комментарий к заказу</label>
         <textarea id="message" rows="1" class="mb-2 p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-pink-200 focus:ring-red-500 focus:border-red-500" placeholder="Ваш комментарий"></textarea>

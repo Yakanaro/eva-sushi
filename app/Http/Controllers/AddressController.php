@@ -34,6 +34,13 @@ class AddressController extends Controller
         return view('address.index', compact('addresses', 'positionCount'));
     }
 
+    public function edit(Address $address)
+    {
+        return view('address.edit', compact($address));
+    }
+
+
+
     public function destroy(Address $address)
     {
         $user = Auth::user();

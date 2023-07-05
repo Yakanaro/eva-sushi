@@ -21,11 +21,9 @@
     <header class="">
         @include('layouts.navigationWithReg')
     </header>
-
     <div class="mt-20">
         @include('address.layouts.addressList')
     </div>
-
     <footer>
         @include('layouts.footer')
     </footer>
