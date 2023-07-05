@@ -208,17 +208,19 @@
             });
         </script>
 
-
         <script>
-            const addToCartBtn = document.querySelector('.add-to-cart-btn');
+            const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 
-            addToCartBtn.addEventListener('click', function() {
-                addToCartBtn.textContent = 'Добавлено в корзину';
-                addToCartBtn.disabled = true;
-                addToCartBtn.classList.remove('bg-gradient-to-r', 'from-red-200', 'via-red-300', 'to-yellow-200', 'hover:bg-gradient-to-bl');
-                addToCartBtn.classList.add('bg-gray-400', 'hover:bg-gray-400', 'cursor-not-allowed');
+            addToCartBtns.forEach(function(btn) {
+                btn.addEventListener('click', function() {
+                    btn.textContent = 'Добавлено в корзину';
+                    btn.disabled = true;
+                    btn.classList.remove('bg-gradient-to-r', 'from-red-200', 'via-red-300', 'to-yellow-200', 'hover:bg-gradient-to-bl');
+                    btn.classList.add('bg-gray-400', 'hover:bg-gray-400', 'cursor-not-allowed');
+                });
             });
         </script>
+
     </div>
 
     <footer>
