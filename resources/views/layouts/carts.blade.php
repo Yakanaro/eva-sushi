@@ -82,9 +82,11 @@
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-4">Адрес доставки</label>
         <div class="">
             <select id="countries" class="h-11 bg-gray-50 border border-pink-200 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                @foreach($user->addresses as $address)
-                    <option selected>{{$address->fullAddress($address)}}</option>
-                @endforeach
+                @if($user)
+                    @foreach($user->addresses as $address)
+                        <option selected>{{$address->fullAddress($address)}}</option>
+                    @endforeach
+                @endif
             </select>
             <div class="flex flex justify-center items-center mt-3">
                 <button type="button" data-modal-target="addAddress" data-modal-toggle="addAddress" class=" h-11 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Добавить</button>
