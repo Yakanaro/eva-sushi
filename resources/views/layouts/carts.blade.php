@@ -184,3 +184,38 @@
     });
 </script>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var quantityInput = document.getElementById('quantity-input');
+        var decreaseButton = document.getElementById('quantity-decrease');
+        var increaseButton = document.getElementById('quantity-increase');
+
+
+        var savedValue = localStorage.getItem('quantity');
+        if (savedValue) {
+            quantityInput.value = savedValue;
+        }
+
+        decreaseButton.addEventListener('click', function() {
+            var currentValue = parseInt(quantityInput.value);
+            if (currentValue > 1) {
+                quantityInput.value = currentValue - 1;
+                saveQuantityValue();
+            }
+        });
+
+        increaseButton.addEventListener('click', function() {
+            var currentValue = parseInt(quantityInput.value);
+            quantityInput.value = currentValue + 1;
+            saveQuantityValue();
+        });
+
+        // Сохранение значения в localStorage
+        function saveQuantityValue() {
+            var value = quantityInput.value;
+            localStorage.setItem('quantity', value);
+        }
+    });
+</script>
+
+
