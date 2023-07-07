@@ -15,6 +15,6 @@ class AccountUserController extends Controller
         $positions = Position::all();
         $user = Auth::user();
         $positionCount = $user && $user->cart ? $user->cart->positions()->count() : 0;
-        return view('account.index', compact('categories', 'positionCount', 'positions'));
+        return view('account.index', compact('categories', 'positionCount', 'positions', 'user'));
     }
 }

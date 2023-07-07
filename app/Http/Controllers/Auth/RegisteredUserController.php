@@ -32,7 +32,9 @@ class RegisteredUserController extends Controller
     {
         $request->validate([
 //            'phone' => ['required', 'string', 'unique:users']
-            'phone' => ['required', 'string', 'unique:users']
+            'phone' => ['required', 'string', 'unique:users'],
+            'name' => ['string', 'max:255'],
+            'email' => ['string', 'email', 'max:255', 'unique:'.User::class],
         ]);
 
         $user = User::where('phone', $request->phone)->first();

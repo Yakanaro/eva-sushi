@@ -62,7 +62,7 @@ Route::get('/dashboard', function () {
 
 Route::get('admin/users', [ProfileController::class, 'index'])->name('profile.index');
 
-Route::get('/account', [AccountUserController::class, 'index'])->name('orders.index');
+Route::get('/account', [AccountUserController::class, 'index'])->name('account.index');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
