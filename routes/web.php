@@ -50,6 +50,7 @@ Route::post('/', [AddressController::class, 'store'])->name('address.store');
 Route::get('/addresses', [AddressController::class, 'index'])->name('address.index');
 Route::delete('/addresses/{address}', [AddressController::class, 'destroy'])->name('address.delete');
 Route::get('addresses/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
+Route::patch('addresses/{address}', [AddressController::class, 'update'])->name('address.update');
 
 Route::post('/cart',[CartController::class, 'addToCart'])->name('cart.add');
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');

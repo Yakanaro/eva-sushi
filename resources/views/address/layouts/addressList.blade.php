@@ -12,10 +12,14 @@
             </tr>
             </thead>
             <tbody>
-            @forelse($addresses as $address)
+            @forelse($user->addresses as $address)
                 <tr class="bg-white border-b border-t border-pink-400 text-center">
                     <td class="px-4 py-2 sm:px-6 sm:py-4">
-                       {{$address->fullAddress($address)}}
+                        @if($user)
+                            {{$address->fullAddress($address)}}
+                        @else
+                            <p>Нет добавленных адресов</p>
+                        @endif
                     </td>
                     <td>
                         <div class="flex flex-row justify-center space-x-3 text-center">
@@ -26,7 +30,7 @@
                                     Удалить
                                 </button>
                             </form>
-                            <button type="button" data-modal-target="editAddress" data-modal-toogle="editAddress" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
+                            <button type="button" data-modal-target="edit-address-{{$address->id}}" data-modal-toggle="edit-address-{{$address->id}}" data-position-id="{{ $address->id }}" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">
                                 Изменить
                             </button>
                         </div>
@@ -43,7 +47,10 @@
         </table>
     </div>
 </div>
+
 {{--modal window for edit address--}}
-<div id="editAddress" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
-    @include('address.edit')
-</div>
+@foreach($user->addresses as $address)
+    <div>
+        @include('address.edit')
+    </div>
+@endforeach

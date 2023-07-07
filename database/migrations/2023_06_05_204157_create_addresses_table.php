@@ -15,12 +15,12 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users');
             $table->string('street');
-            $table->string('house');
-            $table->string('building')->nullable();
-            $table->string('entrance')->nullable();
-            $table->string('apartment')->nullable();
-            $table->string('floor')->nullable();
-            $table->string('intercom_code')->nullable();
+            $table->integer('house');
+            $table->integer('building')->nullable();
+            $table->integer('entrance')->nullable();
+            $table->integer('apartment')->nullable();
+            $table->integer('floor')->nullable();
+            $table->integer('intercom_code')->nullable();
             $table->timestamps();
         });
     }

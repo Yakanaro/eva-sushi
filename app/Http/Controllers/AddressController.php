@@ -12,11 +12,11 @@ class AddressController extends Controller
     {
         $data = $this->validate($request, [
             'street' => 'required|string',
-            'house' => 'nullable|string',
-            'building' => 'nullable|string',
-            'entrance' => 'nullable|string',
-            'apartment' => 'nullable|string',
-            'floor' => 'nullable|string',
+            'house' => 'nullable|numeric',
+            'building' => 'nullable|numeric',
+            'entrance' => 'nullable|numeric',
+            'apartment' => 'nullable|numeric',
+            'floor' => 'nullable|numeric',
             'intercom_code' => 'nullable|string',
         ]);
         $data['user_id'] = Auth::id();
@@ -28,10 +28,9 @@ class AddressController extends Controller
     public function index()
     {
         $user = Auth::user();
-        $cart = $user->cart;
         $addresses = Address::all();
-        $positionCount = $cart->positions()->count();
-        return view('address.index', compact('addresses', 'positionCount'));
+        $positionCount = $user && $user->cart ? $user->cart->positions()->count() : 0;
+        return view('address.index', compact('addresses', 'positionCount', 'user'));
     }
 
     public function edit(Address $address)
@@ -39,7 +38,24 @@ class AddressController extends Controller
         return view('address.edit', compact($address));
     }
 
+    public function update(Request $request, Address $address)
+    {
+        $data = request()->validate([
+            'street' => 'required|string',
+            'house' => 'nullable|numeric',
+            'building' => 'nullable|numeric',
+            'entrance' => 'nullable|numeric',
+            'apartment' => 'nullable|numeric',
+            'floor' => 'nullable|numeric',
+            'intercom_code' => 'nullable|string',
+        ]);
+        $user = Auth::user();
+        $addresses = Address::all();
+        $positionCount = $user && $user->cart ? $user->cart->positions()->count() : 0;
 
+        $address->update($data);
+        return view('address.index', compact('addresses', 'positionCount', 'user'));
+    }
 
     public function destroy(Address $address)
     {
