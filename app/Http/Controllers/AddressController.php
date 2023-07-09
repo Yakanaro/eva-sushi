@@ -25,13 +25,16 @@ class AddressController extends Controller
         return redirect()->route('cart.index', compact('address'));
     }
 
+
+
     public function index()
     {
         $user = Auth::user();
-        $addresses = Address::all();
+        $addresses = $user->adresses;
         $positionCount = $user && $user->cart ? $user->cart->positions()->count() : 0;
         return view('address.index', compact('addresses', 'positionCount', 'user'));
     }
+
 
     public function edit(Address $address)
     {
