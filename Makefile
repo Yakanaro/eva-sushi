@@ -1,4 +1,8 @@
 backend:
-	php artisan serve
+	php artisan serve &
+
 frontend:
-	npm run dev
+	npm run dev &
+
+start: backend frontend
+	wait

@@ -35,7 +35,7 @@ class AddressController extends Controller
 
     public function edit(Address $address)
     {
-        return view('address.edit', compact($address));
+        return view('address.edit', compact('address'));
     }
 
     public function update(Request $request, Address $address)
