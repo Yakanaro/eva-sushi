@@ -53,12 +53,6 @@ Route::prefix('admin')->group(function () {
     Route::delete('labels/{label}', [LabelController::class, 'destroy'])->name('label.delete');
 });
 
-//Route::post('/', [AddressController::class, 'store'])->name('address.store');
-//Route::get('/addresses', [AddressController::class, 'index'])->name('address.index');
-//Route::delete('/addresses/{address}', [AddressController::class, 'destroy'])->name('address.delete');
-//Route::get('addresses/{address}/edit', [AddressController::class, 'edit'])->name('address.edit');
-//Route::patch('addresses/{address}', [AddressController::class, 'update'])->name('address.update');
-
 Route::resource('addresses', AddressController::class)
     ->except(['show', 'create'])
     ->names([
@@ -69,27 +63,11 @@ Route::resource('addresses', AddressController::class)
         'destroy' => 'address.delete'
     ]);
 
-//Route::post('/cart',[CartController::class, 'addToCart'])->name('cart.add');
-//Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
-//Route::delete('/cart/{position}', [CartController::class, 'destroy'])->name('cart.delete');
-
 Route::prefix('cart')->group(function () {
     Route::post('/', [CartController::class, 'addToCart'])->name('cart.add');
     Route::get('/', [CartController::class, 'index'])->name('cart.index');
     Route::delete('/{position}', [CartController::class, 'destroy'])->name('cart.delete');
 });
-
-//Route::get('/dashboard', function () {
-//    return view('dashboard');
-//})->middleware(['auth', 'verified'])->name('dashboard');
-//
-//Route::get('admin/users', [ProfileController::class, 'index'])->name('profile.index');
-//
-//Route::get('/account', [AccountUserController::class, 'index'])->name('account.index');
-
-//Route::prefix('admin')->name('admin.')->group(function () {
-//    Route::get('users', [ProfileController::class, 'index'])->name('users.index');
-//});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
