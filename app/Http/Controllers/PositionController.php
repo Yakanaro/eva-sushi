@@ -47,7 +47,7 @@ class PositionController extends Controller
         $position = Position::create($data);
         $position->labels()->attach($labels);
 
-        return redirect()->route('admin.positions');
+        return redirect()->route('position.index');
     }
 
     public function edit(Position $position)
@@ -104,6 +104,6 @@ class PositionController extends Controller
         $position->delete();
         $path_img = $position->preview_image;
         Storage::disk('public')->delete($path_img);
-        return redirect()->route('admin.positions');
+        return redirect()->route('position.index');
     }
 }

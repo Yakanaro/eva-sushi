@@ -1,5 +1,5 @@
 <form method="get"
-      action="{{route('admin.search')}}"
+      action="{{route('position.search')}}"
       class="ml-[150px]">
     @csrf
         <div class="relative w-full">
