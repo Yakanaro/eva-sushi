@@ -83,7 +83,7 @@ class PositionController extends Controller
         $data['status'] = (bool) $data['status'];
         $position->update($data);
         $position->labels()->sync($label);
-        return redirect()->route('admin.positions', compact('positions', 'categories', 'labels'));
+        return redirect()->route('position.index', compact('positions', 'categories', 'labels'));
     }
 
     public function search()
