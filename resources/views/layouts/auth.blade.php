@@ -23,18 +23,28 @@
 
 <script>
     function formatPhoneNumber(input) {
-        let number = input.value.replace(/\D/g,''); // remove all non-digits
+        let original = input.value;
+        let number = original.replace(/\D/g,'');
+
+        if (number.length > 11) {
+            input.setCustomValidity("Номер не должен превышать 11 знаков");
+            input.reportValidity();
+            return;
+        } else {
+            input.setCustomValidity("");
+        }
+
         if (number.length > 1) {
-            number = number.slice(0,1) + "(" + number.slice(1); // add parenthesis after first digit
+            number = number.slice(0,1) + "(" + number.slice(1);
         }
         if (number.length > 5) {
-            number = number.slice(0,5) + ")" + number.slice(5); // add closing parenthesis after fourth digit
+            number = number.slice(0,5) + ")" + number.slice(5);
         }
         if (number.length > 9) {
-            number = number.slice(0,9) + "-" + number.slice(9); // add first hyphen after seventh digit
+            number = number.slice(0,9) + "-" + number.slice(9);
         }
         if (number.length > 12) {
-            number = number.slice(0,12) + "-" + number.slice(12); // add second hyphen after ninth digit
+            number = number.slice(0,12) + "-" + number.slice(12);
         }
         input.value = number;
     }
