@@ -23,29 +23,29 @@
 
                     <div class="flex flex-col">
                         <label for="building" class="block mb-2 text-sm font-medium text-gray-900 text-center">Корпус</label>
-                        <input type="number" name="building" id="building" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input pattern="[0-9]*" type="number" name="building" id="building" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
 
                     <div class="flex flex-col">
                         <label for="entrance" class="block mb-2 text-sm font-medium text-gray-900 text-center">Подъезд</label>
-                        <input type="number" name="entrance" id="entrance" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input pattern="[0-9]*" type="number" name="entrance" id="entrance" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                 </div>
 
                 <div class="flex space-x-2">
                     <div class="flex flex-col">
                         <label for="apartment" class="block mb-2 text-sm font-medium text-gray-900 text-center">Квартира</label>
-                        <input type="number" name="apartment" id="apartment" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input pattern="[0-9]*" type="number" name="apartment" id="apartment" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
 
                     <div class="flex flex-col">
                         <label for="floor" class="block mb-2 text-sm font-medium text-gray-900 text-center">Этаж</label>
-                        <input type="number" name="floor" id="floor" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input pattern="[0-9]*" type="number" name="floor" id="floor" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
 
                     <div class="flex flex-col">
                         <label for="intercom_code" class="block mb-2 text-sm font-medium text-gray-900 text-center">Код домофона</label>
-                        <input type="number" name="intercom_code" id="intercom_code" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
+                        <input pattern="[0-9]*" type="number" name="intercom_code" id="intercom_code" placeholder="" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
                     </div>
                 </div>
 
