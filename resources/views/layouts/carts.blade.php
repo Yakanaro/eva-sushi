@@ -52,7 +52,7 @@
                                 </div>
                             </td>
                             <td class="px-4 py-2 sm:px-6 sm:py-4">
-                                {{ $position->price}}₽
+                                {{ intval($position->price)}}₽
                             </td>
                             <td class="px-4 py-2 sm:px-6 sm:py-4">
                                 <form action="{{route('cart.delete', $position->id)}}" method="post">
@@ -148,7 +148,7 @@
     </div>
     <div class="text-black grow shadow-lg shadow-pink-300/30 text-center flex justify-center items-center rounded-lg">
         <p class="text-xl font-bold">Сумма заказа: </p>
-        <p class="text-xl font-bold">{{$totalPrice}}₽</p>
+        <p class="text-xl font-bold">{{intval($totalPrice)}}₽</p>
     </div>
 </div>
 <div class="flex flex justify-center items-center mt-4">
