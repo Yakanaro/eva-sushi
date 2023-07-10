@@ -11,7 +11,7 @@
         </div>
 </form>
 
-<div class="pl-[150px]">
+<div class="">
     <table class="w-full text-sm text-left text-gray-500">
         <thead class="text-xs text-black uppercase bg-gray-50 text-center">
         <tr>
@@ -63,6 +63,14 @@
                         <span class="flex w-3 h-3 bg-red-500 rounded-full mt-4"></span>
                     @endif
                 </td>
+                <div class="container mx-auto mt-5">
+                    @if($errors->any())
+                        <div class="alert alert-danger">
+                            @foreach ($errors->all() as $error)
+                                <div>{{ $error }}</div>
+                            @endforeach
+                        </div>
+                    @endif
                 <td class="px-6 py-4">
                     <div class="flex flex-row space-x-3 justify-center">
                         <button id="deleteButton" data-modal-toggle="deleteModal" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10" type="button">
@@ -72,6 +80,7 @@
                         <button type="submit" data-modal-target="edit-position-{{ $position->id }}" data-modal-toggle="edit-position-{{ $position->id }}" data-position-id="{{ $position->id }}" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10">Изменить</button>
                     </div>
                 </td>
+                </div>
             </tr>
         @endforeach
         </tbody>
