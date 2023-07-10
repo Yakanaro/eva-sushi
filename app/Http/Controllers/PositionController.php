@@ -100,10 +100,24 @@ class PositionController extends Controller
 
     public function destroy(Position $position)
     {
-        $position->labels()->detach();
-        $position->delete();
-        $path_img = $position->preview_image;
-        Storage::disk('public')->delete($path_img);
-        return redirect()->route('position.index');
+        try {
+            $position->labels()->detach();
+            $position->delete();
+
+            $path_img = $position->preview_image;
+            Storage::disk('public')->delete($path_img);
+
+            return redirect()->route('position.index');
+        }
+        catch (\Illuminate\Database\QueryException $e) {
+            return redirect()->back()->withErrors([
+                'error' => 'На данный момент нельзя удалить данную позицию, так как она добавлена в корзину пользователя'
+            ]);
+        }
+        catch (\Exception $e) {
+            return redirect()->back()->withErrors([
+                'error' => 'Error deleting: ' . $e->getMessage()
+            ]);
+        }
     }
 }
