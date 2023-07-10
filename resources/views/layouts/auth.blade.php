@@ -12,7 +12,7 @@
                     @csrf
                     <div>
                         <label for="phone" class="block mb-2 text-sm font-medium text-gray-900 ">Ваш номер телефона</label>
-                        <input type="tel" id="phone" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="8900888888" pattern="8\(\d{3}\)\d{3}-\d{2}-\d{2}" oninput="formatPhoneNumber(this)" required>
+                        <input type="tel" id="phone" name="phone" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5" placeholder="8(900)888-88-88" pattern="8\(\d{3}\)\d{3}-\d{2}-\d{2}" oninput="formatPhoneNumber(this)" required>
                     </div>
                     <button type="submit" class="w-full text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">Войти</button>
                 </form>
