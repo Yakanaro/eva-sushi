@@ -89,7 +89,11 @@
                 @endif
             </select>
             <div class="flex flex justify-center items-center mt-3">
-                <button type="button" data-modal-target="addAddress" data-modal-toggle="addAddress" class=" h-11 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Добавить</button>
+                @auth
+                    <button type="button" data-modal-target="addAddress" data-modal-toggle="addAddress" class=" h-11 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Добавить</button>
+                @else
+                    <button type="button" data-modal-target="auth-modal" data-modal-toggle="auth-modal" class=" h-11 text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">Добавить</button>
+                @endauth
             </div>
         </div>
         <div class="ml-2">
@@ -154,6 +158,10 @@
 <!-- Main modal -->
 <div id="addAddress" tabindex="-1" aria-hidden="true" class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full">
     @include('address.addAddress')
+</div>
+
+<div>
+    @include('layouts.auth')
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
