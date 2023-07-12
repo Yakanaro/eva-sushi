@@ -19,7 +19,7 @@
                     @if ($position->category['title'] === $category->title && $position->status )
                         <div class="w-full bg-white border border-gray-200 rounded-lg shadow" id="{{$category->title}}-{{$position->id}}" role="tabpanel" aria-labelledby="{{$category->title}}-tab">
                             <a href="#">
-                                <img class="rounded-t-lg" src="{{asset('/storage/'.$position->preview_image)}}" width="232" height="360" alt="" />
+                                <img class="rounded-t-lg" src="{{asset('/storage/'.$position->preview_image)}}" width="301" height="232" alt="" />
                             </a>
                             @foreach($position->labels as $label)
                              <span class="bg-pink-100 text-pink-800 text-xs font-medium mr-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300 ml-4">{{$label->title}}</span>
