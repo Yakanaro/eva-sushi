@@ -175,28 +175,49 @@
 </div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
 <script>
     document.addEventListener('DOMContentLoaded', (event) => {
-        @if(isset($position)) // Проверка наличия объекта $position
+        @if(isset($position))
         let quantityInput = document.querySelector('#quantity-input-{{$position->id}}');
         let priceDisplay = document.querySelector('#price-display-{{$position->id}}');
         let quantityDecrease = document.querySelector('#quantity-decrease-{{$position->id}}');
         let quantityIncrease = document.querySelector('#quantity-increase-{{$position->id}}');
         let totalCost = document.querySelector("#total-cost");
 
+        let savedQuantity = localStorage.getItem('quantity-input-' + {{$position->id}});
+        let savedPrice = localStorage.getItem('price-display-' + {{$position->id}});
+        let savedTotalCost = localStorage.getItem('total-cost');
+
+        if(savedQuantity) {
+            quantityInput.value = savedQuantity;
+        }
+
+        if(savedPrice) {
+            priceDisplay.textContent = savedPrice + '₽';
+        }
+
+        if(savedTotalCost) {
+            totalCost.textContent = savedTotalCost + '₽';
+        }
+
         quantityInput.addEventListener('input', function() {
             let total = this.value * {{$position->price}};
             priceDisplay.textContent = total + '₽';
             recalculateTotalCost();
+
+            localStorage.setItem('quantity-input-' + {{$position->id}}, this.value);
+            localStorage.setItem('price-display-' + {{$position->id}}, total);
         });
 
         quantityDecrease.addEventListener('click', function() {
-            if(quantityInput.value > 1) { // Проверка, чтобы значение не опускалось ниже 1
+            if(quantityInput.value > 1) {
                 quantityInput.value--;
                 let total = quantityInput.value * {{$position->price}};
                 priceDisplay.textContent = total + '₽';
                 recalculateTotalCost();
+
+                localStorage.setItem('quantity-input-' + {{$position->id}}, quantityInput.value);
+                localStorage.setItem('price-display-' + {{$position->id}}, total);
             }
         });
 
@@ -205,10 +226,12 @@
             let total = quantityInput.value * {{$position->price}};
             priceDisplay.textContent = total + '₽';
             recalculateTotalCost();
+
+            localStorage.setItem('quantity-input-' + {{$position->id}}, quantityInput.value);
+            localStorage.setItem('price-display-' + {{$position->id}}, total);
         });
 
         function recalculateTotalCost() {
-            // Вычисляем общую стоимость, используя значения каждой позиции
             let positions = document.querySelectorAll('.price-display');
             let total = 0;
             positions.forEach(position => {
@@ -218,8 +241,9 @@
                 }
             });
             totalCost.textContent = total + '₽';
-        }
 
+            localStorage.setItem('total-cost', total);
+        }
         @endif
     });
 </script>
