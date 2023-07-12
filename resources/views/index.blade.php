@@ -14,9 +14,6 @@
     <link rel="icon" href="/favicon.svg" type="image/x-icon" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-{{--    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">--}}
-{{--    <script src="{{ secure_asset('js/app.js') }}" defer></script>--}}
 </head>
 
 <body class="font-sans antialiased h-full ">
@@ -258,7 +255,6 @@
         </script>
 
     </div>
-
     <footer>
         @include('layouts.footer')
     </footer>

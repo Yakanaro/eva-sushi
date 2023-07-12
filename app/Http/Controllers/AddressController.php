@@ -21,6 +21,7 @@ class AddressController extends Controller
         ]);
         $data['user_id'] = Auth::id();
         $address = Address::create($data);
+        $request->session()->flash('status', 'Адрес успешно добавлен');
 
         return redirect()->route('cart.index', compact('address'));
     }

@@ -44,11 +44,9 @@ Route::post('admin/logout', [AdminController::class, 'logout'])->name('admin.log
 
 Route::middleware(['auth:admin', 'admin'])->prefix('admin')->group(function () {
     Route::get('users', [ProfileController::class, 'index'])->name('users.index');
-
     Route::post('categories', [CategoriesController::class, 'store'])->name('category.store');
     Route::get('categories', [CategoriesController::class, 'index'])->name('category.index');
     Route::delete('categories/{category}', [CategoriesController::class, 'destroy'])->name('category.delete');
-
     Route::post('labels', [LabelController::class, 'store'])->name('label.store');
     Route::get('labels', [LabelController::class, 'index'])->name('label.index');
     Route::delete('labels/{label}', [LabelController::class, 'destroy'])->name('label.delete');
@@ -74,7 +72,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
-
     Route::get('/account', [AccountUserController::class, 'index'])->name('account.index');
 });
 
