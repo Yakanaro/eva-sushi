@@ -264,14 +264,14 @@
                             'text': '#838391'
                         },
                         'button': {
-                            'background': '#4b81e8'
+                            'background': '#fbcfe8'
                         }
                     },
                     'theme': 'classic',
                     'position': 'bottom-right',
                     'content': {
                         'message': 'Этот веб-сайт использует файлы cookie для обеспечения лучшего пользовательского опыта.',
-                        'dismiss': 'Понял!',
+                        'dismiss': 'Принять',
                         'link': 'Узнай больше'
                     }
                 })
