@@ -1,3 +1,24 @@
+{{--alert--}}
+<div class="fixed right-0 bottom-0 p-4">
+    @if (session('status'))
+        <div id="alert-3" class="flex items-center p-4 mb-4 text-green-800 rounded-lg bg-green-50" role="alert">
+            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z"/>
+            </svg>
+            <span class="sr-only">Info</span>
+            <div class="ml-3 text-sm font-medium">
+                {{session('status')}}
+            </div>
+            <button type="button" class="ml-auto -mx-1.5 -my-1.5 bg-green-50 text-green-500 rounded-lg focus:ring-2 focus:ring-green-400 p-1.5 hover:bg-green-200 inline-flex items-center justify-center h-8 w-8" data-dismiss-target="#alert-3" aria-label="Close">
+                <span class="sr-only">Close</span>
+                <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                </svg>
+            </button>
+        </div>
+    @endif
+</div>
+{{--table--}}
 <div class="overflow-x-auto drop-shadow-lg rounded-lg mx-3 shadow-lg shadow-pink-300/30">
     <div class="overflow-x-auto">
         <table class="w-full text-sm text-left text-black ">
@@ -51,8 +72,8 @@
                                     </button>
                                 </div>
                             </td>
-                            <td class="px-4 py-2 sm:px-6 sm:py-4">
-                                {{ intval($position->price)}}₽
+                            <td id="price-display-{{$position->id}}" class="price-display px-4 py-2 sm:px-6 sm:py-4">
+                                {{intval($position->price)}}₽
                             </td>
                             <td class="px-4 py-2 sm:px-6 sm:py-4">
                                 <form action="{{route('cart.delete', $position->id)}}" method="post">
@@ -111,29 +132,18 @@
                 <option>Наличными</option>
             </select>
         </div>
-{{--        <div class="flex flex-row justify-center space-x-3">--}}
-{{--            <div class="flex items-center pl-4 border border-pink-200 rounded">--}}
-{{--                <input id="bordered-radio-1" type="radio" value="" name="bordered-radio" class="w-10 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">--}}
-{{--                <label for="bordered-radio-1" class="w-full py-4 ml-2 text-sm font-medium text-black">Наличными</label>--}}
-{{--            </div>--}}
-{{--            <div class="flex items-center pl-4 border border-pink-200 rounded">--}}
-{{--                <input checked id="bordered-radio-2" type="radio" value="" name="bordered-radio" class="w-5 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500">--}}
-{{--                <label for="bordered-radio-2" class="w-full py-4 ml-2 text-sm font-medium text-black mr-2">Курьеру по карте</label>--}}
-{{--            </div>--}}
-{{--        </div>--}}
-
         <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 text-center mt-2 ">Количество гостей</label>
         <div class="flex items-center space-x-3 justify-center mb-3">
-            <button id="quantity-decrease" class="quantity-decrease inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+            <button class="quantity-decrease inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                 <span class="sr-only">Quantity button</span>
                 <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1z" clip-rule="evenodd"></path>
                 </svg>
             </button>
             <div>
-                <input type="number" id="quantity-input" class="quantity-input bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required value="1">
+                <input type="number" class="quantity-input bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required value="1">
             </div>
-            <button id="quantity-increase" class="quantity-increase inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
+            <button class="quantity-increase inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                 <span class="sr-only">Quantity button</span>
                 <svg class="w-4 h-4" aria-hidden="true" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z" clip-rule="evenodd"></path>
@@ -148,7 +158,7 @@
     </div>
     <div class="text-black grow shadow-lg shadow-pink-300/30 text-center flex justify-center items-center rounded-lg">
         <p class="text-xl font-bold">Сумма заказа: </p>
-        <p class="text-xl font-bold">{{intval($totalPrice)}}₽</p>
+        <p id="total-cost" class="text-xl font-bold">{{intval($totalPrice)}}₽</p>
     </div>
 </div>
 <div class="flex flex justify-center items-center mt-4">
@@ -166,64 +176,74 @@
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function() {
+    document.addEventListener('DOMContentLoaded', (event) => {
+        @if(isset($position))
+        let quantityInput = document.querySelector('#quantity-input-{{$position->id}}');
+        let priceDisplay = document.querySelector('#price-display-{{$position->id}}');
+        let quantityDecrease = document.querySelector('#quantity-decrease-{{$position->id}}');
+        let quantityIncrease = document.querySelector('#quantity-increase-{{$position->id}}');
+        let totalCost = document.querySelector("#total-cost");
 
-        let increaseBtn = $('[id^="quantity-increase-"]');
-        var decreaseBtn = $('[id^="quantity-decrease-"]');
-        var quantityInput = $('[id^="quantity-input-"]');
+        let savedQuantity = localStorage.getItem('quantity-input-' + {{$position->id}});
+        let savedPrice = localStorage.getItem('price-display-' + {{$position->id}});
+        let savedTotalCost = localStorage.getItem('total-cost');
 
-
-        increaseBtn.on('click', function() {
-            var positionId = $(this).attr('id').split('-')[2];
-            var currentValue = parseInt($('#quantity-input-' + positionId).val());
-            if (!isNaN(currentValue)) {
-                $('#quantity-input-' + positionId).val(currentValue + 1);
-            }
-        });
-
-
-        decreaseBtn.on('click', function() {
-            var positionId = $(this).attr('id').split('-')[2];
-            var currentValue = parseInt($('#quantity-input-' + positionId).val());
-            if (!isNaN(currentValue) && currentValue > 1) {
-                $('#quantity-input-' + positionId).val(currentValue - 1);
-            }
-        });
-    });
-</script>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var quantityInput = document.getElementById('quantity-input');
-        var decreaseButton = document.getElementById('quantity-decrease');
-        var increaseButton = document.getElementById('quantity-increase');
-
-
-        var savedValue = localStorage.getItem('quantity');
-        if (savedValue) {
-            quantityInput.value = savedValue;
+        if(savedQuantity) {
+            quantityInput.value = savedQuantity;
         }
 
-        decreaseButton.addEventListener('click', function() {
-            var currentValue = parseInt(quantityInput.value);
-            if (currentValue > 1) {
-                quantityInput.value = currentValue - 1;
-                saveQuantityValue();
+        if(savedPrice) {
+            priceDisplay.textContent = savedPrice + '₽';
+        }
+
+        if(savedTotalCost) {
+            totalCost.textContent = savedTotalCost + '₽';
+        }
+
+        quantityInput.addEventListener('input', function() {
+            let total = this.value * {{$position->price}};
+            priceDisplay.textContent = total + '₽';
+            recalculateTotalCost();
+
+            localStorage.setItem('quantity-input-' + {{$position->id}}, this.value);
+            localStorage.setItem('price-display-' + {{$position->id}}, total);
+        });
+
+        quantityDecrease.addEventListener('click', function() {
+            if(quantityInput.value > 1) {
+                quantityInput.value--;
+                let total = quantityInput.value * {{$position->price}};
+                priceDisplay.textContent = total + '₽';
+                recalculateTotalCost();
+
+                localStorage.setItem('quantity-input-' + {{$position->id}}, quantityInput.value);
+                localStorage.setItem('price-display-' + {{$position->id}}, total);
             }
         });
 
-        increaseButton.addEventListener('click', function() {
-            var currentValue = parseInt(quantityInput.value);
-            quantityInput.value = currentValue + 1;
-            saveQuantityValue();
+        quantityIncrease.addEventListener('click', function() {
+            quantityInput.value++;
+            let total = quantityInput.value * {{$position->price}};
+            priceDisplay.textContent = total + '₽';
+            recalculateTotalCost();
+
+            localStorage.setItem('quantity-input-' + {{$position->id}}, quantityInput.value);
+            localStorage.setItem('price-display-' + {{$position->id}}, total);
         });
 
-        // Сохранение значения в localStorage
-        function saveQuantityValue() {
-            var value = quantityInput.value;
-            localStorage.setItem('quantity', value);
+        function recalculateTotalCost() {
+            let positions = document.querySelectorAll('.price-display');
+            let total = 0;
+            positions.forEach(position => {
+                let price = parseInt(position.textContent.replace('₽', ''));
+                if(!isNaN(price)) {
+                    total += price;
+                }
+            });
+            totalCost.textContent = total + '₽';
+
+            localStorage.setItem('total-cost', total);
         }
+        @endif
     });
 </script>
-
-

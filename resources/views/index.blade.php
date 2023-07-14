@@ -12,11 +12,9 @@
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap">
     <link rel="icon" href="/favicon.svg" type="image/x-icon" />
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/cookieconsent.min.css') }}" />
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
-
-{{--    <link rel="stylesheet" href="{{ secure_asset('css/app.css') }}">--}}
-{{--    <script src="{{ secure_asset('js/app.js') }}" defer></script>--}}
 </head>
 
 <body class="font-sans antialiased h-full ">
@@ -217,6 +215,7 @@
         </div>
 
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="{{ asset('js/cookieconsent.min.js') }}"></script>
         <script>
             $(document).ready(function () {
                 $('.add-to-cart-btn').on('click', function (e) {
@@ -256,9 +255,29 @@
                 });
             });
         </script>
-
+        <script>
+            window.addEventListener('load', function () {
+                window.cookieconsent.initialise({
+                    'palette': {
+                        'popup': {
+                            'background': '#edeff5',
+                            'text': '#838391'
+                        },
+                        'button': {
+                            'background': '#fbcfe8'
+                        }
+                    },
+                    'theme': 'classic',
+                    'position': 'bottom-right',
+                    'content': {
+                        'message': 'Этот веб-сайт использует файлы cookie для обеспечения лучшего пользовательского опыта.',
+                        'dismiss': 'Принять',
+                        'link': 'Узнай больше'
+                    }
+                })
+            });
+        </script>
     </div>
-
     <footer>
         @include('layouts.footer')
     </footer>

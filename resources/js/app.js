@@ -1,5 +1,6 @@
 import './bootstrap';
 import 'flowbite';
+import 'cookieconsent';
 
 import Alpine from 'alpinejs';
 
