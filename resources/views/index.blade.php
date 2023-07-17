@@ -40,20 +40,6 @@
                             </a>
                         </div>
                     @endauth
-{{--                    <a href="{{ route('cart.index') }}"--}}
-{{--                       class="relative flex items-center justify-center w-8 h-8 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 mr-1">--}}
-{{--                        <svg fill="#000000" height="50px" width="800px" version="1.1" id="XMLID_268_"--}}
-{{--                             xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"--}}
-{{--                             viewBox="0 0 24 24" xml:space="preserve">--}}
-{{--                <g id="shop-basket">--}}
-{{--                    <g>--}}
-{{--                        <path d="M20.9,24H3.1l-1-11H0V7h4.5l4.7-7l1.7,1.1L7,6.9h10.2l-3.9-5.8L15,0l4.7,7H24v6h-2.1L20.9,24z M13,22h6.1l0.8-9H4.1l0.8,9 H13z M2,11h20V9H2V11z"/>--}}
-{{--                    </g>--}}
-{{--                </g>--}}
-{{--                </svg>--}}
-{{--                        <span class="absolute top-0 right-0 flex items-center justify-center w-4 h-4 text-xs font-bold bg-red-500 text-white rounded-full"--}}
-{{--                              id="positionCount">{{$positionCount}}</span>--}}
-{{--                    </a>--}}
                     <a href="{{ route('cart.index') }}"
                        class="relative flex items-center justify-center w-8 h-8 text-gray-500 rounded-full hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 mr-1">
                         <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 20">
@@ -137,14 +123,8 @@
                         </li>
                     </ul>
                 </div>
-                <!-- Call the modal bucket window -->
-{{--                <div id="staticModal" data-modal-backdrop="static" tabindex="-1" aria-hidden="true"--}}
-{{--                     class="fixed top-0 left-0 right-0 z-50 hidden w-full p-4 overflow-x-hidden overflow-y-auto md:inset-0 h-[calc(100%-1rem)] max-h-full ">--}}
-{{--                    @include('account.NewOrder')--}}
-{{--                </div>--}}
             </div>
         </nav>
-
     </header>
     <div class="mt-20">
         @include('layouts.carousel')
