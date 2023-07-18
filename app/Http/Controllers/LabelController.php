@@ -10,7 +10,7 @@ class LabelController extends Controller
     public function index()
     {
         $labels = Label::all();
-        return view('admin.labelsList', compact('labels'));
+        return view('admin.labels.index', compact('labels'));
     }
 
     public function store(Request $request)

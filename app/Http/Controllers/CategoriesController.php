@@ -10,7 +10,7 @@ class CategoriesController extends Controller
     public function index()
     {
         $categories = Category::all();
-        return view('admin.categoryList', compact('categories'));
+        return view('admin.category.index', compact('categories'));
     }
 
     public function store(Request $request)
@@ -30,7 +30,5 @@ class CategoriesController extends Controller
     {
         $category->delete();
         return redirect()->route('category.index');
-
     }
-
 }

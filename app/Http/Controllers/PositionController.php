@@ -18,7 +18,7 @@ class PositionController extends Controller
         $positions = Position::all();
         $categories = Category::all();
         $labels = Label::all();
-        return view('admin.positionsList', compact('positions', 'categories', 'labels'));
+        return view('admin.positions.index', compact('positions', 'categories', 'labels'));
     }
 
 

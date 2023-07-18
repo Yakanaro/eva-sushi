@@ -25,7 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', [HomeController::class, 'index'])->name('home.index');
 
 Route::get('admin', function () {
-    return view('admin.adminIndex');
+    return view('admin.layouts.adminApp');
 })->middleware('auth:admin');
 
 Route::middleware(['auth:admin', 'admin'])->prefix('admin/positions')->name('position.')->group(function () {
