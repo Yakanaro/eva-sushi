@@ -40,7 +40,7 @@
                                         <div class="flex items-center justify-between mt-[80px]">
                                             <span class="text-3xl font-bold text-gray-900">{{intval($position->price)}}₽</span>
                                             @auth
-                                                <button data-position-id="{{$position->id}}"
+                                                <button data-position-id="{{$position->id}}" data-in-cart="{{ $position->inCart() ?  'true' : 'false' }}"
                                                         class=" text-gray-900 bg-gradient-to-r from-red-200 via-red-300 to-yellow-200 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-red-100 dark:focus:ring-red-400 font-medium rounded-lg text-sm px-5 py-2.5 text-center add-to-cart-btn">
                                                     Заказать
                                                 </button>
@@ -68,13 +68,23 @@
     const addToCartBtns = document.querySelectorAll('.add-to-cart-btn');
 
     addToCartBtns.forEach(function (btn) {
+        const isInCart = btn.getAttribute('data-in-cart') === 'true';
+
+        if (isInCart) {
+            setAddedState(btn);
+        }
+
         btn.addEventListener('click', function () {
-            btn.textContent = 'Добавлено в корзину';
-            btn.disabled = true;
-            btn.classList.remove('bg-gradient-to-r', 'from-red-200', 'via-red-300', 'to-yellow-200', 'hover:bg-gradient-to-bl');
-            btn.classList.add('bg-gray-400', 'hover:bg-gray-400', 'cursor-not-allowed');
+            setAddedState(btn);
         });
     });
+
+    function setAddedState(btn) {
+        btn.textContent = 'Добавлено в корзину';
+        btn.disabled = true;
+        btn.classList.remove('bg-gradient-to-r', 'from-red-200', 'via-red-300', 'to-yellow-200', 'hover:bg-gradient-to-bl');
+        btn.classList.add('bg-gray-400', 'hover:bg-gray-400', 'cursor-not-allowed');
+    }
 </script>
 <script>
     $(document).ready(function () {
