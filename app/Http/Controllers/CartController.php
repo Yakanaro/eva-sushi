@@ -45,7 +45,12 @@ class CartController extends Controller
     public function destroy(Position $position)
     {
         $cart = auth()->user()->cart;
-        $cart->positions()->detach($position);
-        return redirect()->route('cart.index');
+
+        if ($cart) {
+            $cart->positions()->detach($position);
+            return response()->json(['success' => true]);
+        } else {
+            return response()->json(['success' => false]);
+        }
     }
 }

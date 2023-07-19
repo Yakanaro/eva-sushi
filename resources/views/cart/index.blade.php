@@ -68,7 +68,7 @@
                                             </svg>
                                         </button>
                                         <div>
-                                            <input type="number" id="quantity-input-{{$position->id}}" class="quantity-input bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required value="1" min="1">
+                                            <input type="number" data-price="{{$position->price}}" id="quantity-input-{{$position->id}}" class="quantity-input bg-gray-50 w-14 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block px-2.5 py-1 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="1" required value="{{$position->pivot->quantity ?? 1}}" min="1">
                                         </div>
                                         <button id="quantity-increase-{{$position->id}}" class="quantity-increase inline-flex items-center p-1 text-sm font-medium text-gray-500 bg-white border border-gray-300 rounded-full focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700" type="button">
                                             <span class="sr-only">Quantity button</span>
@@ -84,7 +84,7 @@
                                 </td>
                                 {{--Positions delete--}}
                                 <td class="px-4 py-2 sm:px-6 sm:py-4">
-                                    <form action="{{route('cart.delete', $position->id)}}" method="post">
+                                    <form action="{{route('cart.delete', $position->id)}}" method="post" class="delete-form">
                                         @csrf
                                         @method('delete')
                                         <button class="text-white bg-gradient-to-r from-red-400 via-red-500 to-red-600 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2" type="submit" >Удалить</button>
@@ -185,59 +185,60 @@
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
         <script>
             document.addEventListener('DOMContentLoaded', (event) => {
-                @if(isset($position))
-                let quantityInput = document.querySelector('#quantity-input-{{$position->id}}');
-                let priceDisplay = document.querySelector('#price-display-{{$position->id}}');
-                let quantityDecrease = document.querySelector('#quantity-decrease-{{$position->id}}');
-                let quantityIncrease = document.querySelector('#quantity-increase-{{$position->id}}');
+                let quantityInputs = document.querySelectorAll('.quantity-input');
+                let priceDisplays = document.querySelectorAll('.price-display');
+                let quantityDecreases = document.querySelectorAll('.quantity-decrease');
+                let quantityIncreases = document.querySelectorAll('.quantity-increase');
                 let totalCost = document.querySelector("#total-cost");
 
-                let savedQuantity = localStorage.getItem('quantity-input-' + {{$position->id}});
-                let savedPrice = localStorage.getItem('price-display-' + {{$position->id}});
-                let savedTotalCost = localStorage.getItem('total-cost');
+                quantityInputs.forEach((input, index) => {
+                    let positionId = input.id.split("-").pop();
+                    let priceDisplay = priceDisplays[index];
+                    let quantityDecrease = quantityDecreases[index];
+                    let quantityIncrease = quantityIncreases[index];
 
-                if(savedQuantity) {
-                    quantityInput.value = savedQuantity;
-                }
+                    let savedQuantity = localStorage.getItem('quantity-input-' + positionId);
+                    let savedPrice = localStorage.getItem('price-display-' + positionId);
+                    let savedTotalCost = localStorage.getItem('total-cost');
 
-                if(savedPrice) {
-                    priceDisplay.textContent = savedPrice + '₽';
-                }
-
-                if(savedTotalCost) {
-                    totalCost.textContent = savedTotalCost + '₽';
-                }
-
-                quantityInput.addEventListener('input', function() {
-                    let total = this.value * {{$position->price}};
-                    priceDisplay.textContent = total + '₽';
-                    recalculateTotalCost();
-
-                    localStorage.setItem('quantity-input-' + {{$position->id}}, this.value);
-                    localStorage.setItem('price-display-' + {{$position->id}}, total);
-                });
-
-                quantityDecrease.addEventListener('click', function() {
-                    if(quantityInput.value > 1) {
-                        quantityInput.value--;
-                        let total = quantityInput.value * {{$position->price}};
-                        priceDisplay.textContent = total + '₽';
-                        recalculateTotalCost();
-
-                        localStorage.setItem('quantity-input-' + {{$position->id}}, quantityInput.value);
-                        localStorage.setItem('price-display-' + {{$position->id}}, total);
+                    if(savedQuantity) {
+                        input.value = savedQuantity;
                     }
+
+                    if(savedPrice) {
+                        priceDisplay.textContent = savedPrice + '₽';
+                    }
+
+                    if(savedTotalCost) {
+                        totalCost.textContent = savedTotalCost + '₽';
+                    }
+
+                    input.addEventListener('input', function() {
+                        recalculateTotal(positionId, input, priceDisplay);
+                    });
+
+                    quantityDecrease.addEventListener('click', function() {
+                        if(input.value > 1) {
+                            input.value--;
+                            recalculateTotal(positionId, input, priceDisplay);
+                        }
+                    });
+
+                    quantityIncrease.addEventListener('click', function() {
+                        input.value++;
+                        recalculateTotal(positionId, input, priceDisplay);
+                    });
                 });
 
-                quantityIncrease.addEventListener('click', function() {
-                    quantityInput.value++;
-                    let total = quantityInput.value * {{$position->price}};
+                function recalculateTotal(positionId, input, priceDisplay) {
+                    let pricePerUnit = input.getAttribute('data-price');
+                    let total = input.value * pricePerUnit;
                     priceDisplay.textContent = total + '₽';
                     recalculateTotalCost();
 
-                    localStorage.setItem('quantity-input-' + {{$position->id}}, quantityInput.value);
-                    localStorage.setItem('price-display-' + {{$position->id}}, total);
-                });
+                    localStorage.setItem('quantity-input-' + positionId, input.value);
+                    localStorage.setItem('price-display-' + positionId, total);
+                }
 
                 function recalculateTotalCost() {
                     let positions = document.querySelectorAll('.price-display');
@@ -252,7 +253,40 @@
 
                     localStorage.setItem('total-cost', total);
                 }
-                @endif
+                let deleteForms = document.querySelectorAll('.delete-form');
+
+                deleteForms.forEach((form) => {
+
+                    form.addEventListener('submit', function(e) {
+                        e.preventDefault();
+
+                        fetch(form.action, {
+                            method: 'POST',
+                            body: new FormData(form),
+                            headers: {
+                                'X-Requested-With': 'XMLHttpRequest',
+                                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
+                            }
+                        })
+                            .then((response) => response.json())
+                            .then((data) => {
+                                if (data.success) {
+                                    let formWrapper = form.parentElement.parentElement;
+                                    let positionId = formWrapper.querySelector('.quantity-input').id.split("-").pop();
+                                    localStorage.removeItem('quantity-input-' + positionId);
+                                    localStorage.removeItem('price-display-' + positionId);
+                                    formWrapper.remove();
+                                    recalculateTotalCost();
+                                    let positionCount = document.getElementById("positionCount");
+                                    positionCount.textContent = parseInt(positionCount.textContent) - 1;
+                                } else {
+                                    // Handle error here.
+                                }
+                            }).catch((error) => {
+                            console.error('Error:', error);
+                        });
+                    });
+                });
             });
         </script>
     </div>
